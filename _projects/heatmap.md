@@ -69,7 +69,10 @@ The final inclusion of latitude and longitude data should be as follows:
 | Yunnan Province Lianghe County     | 98.30313363    | 24.81078446   |
 | Yunnan Province Simao City         | 100.9835551    | 22.79249798   |
 | ...                           | ...             | ...            |
+
+
 >The method of obtaining latitude and longitude has been adapted according to [StimuMing's approach](https://www.cnblogs.com/fole-del/p/14810401.html).
+
 #### Alternative Methods
 Certainly, if high precision is not a requisite or if the quantity of data points is amenable to manual or visual inspection, one might consider employing GPT to generate latitude and longitude coordinates. However, it is advisable to construct a prompt that encourages GPT to strive for maximum accuracy or to reference publicly available data sources. 
 
