@@ -3,7 +3,6 @@ layout: page
 title: Distribution Heat Map
 description: Generating a Heatmap Illustrating the Spatial Distribution of China's Intangible Cultural Heritage through Python.
 img: assets/img/12.jpg
-<!-- 头图更换一下 -->
 importance: 1
 category: work
 related_publications: true
