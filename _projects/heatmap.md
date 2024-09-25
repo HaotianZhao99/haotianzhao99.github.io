@@ -46,6 +46,7 @@ The data source is the list of nationally representative ICH projects (including
 In Python, it is possible to draw distribution maps with provincial-level accuracy by using the names of provinces. However, to achieve county-level accuracy, we need to obtain the latitude and longitude data for each county using the API provided by Baidu Maps. After obtaining the latitude and longitude data, we can then proceed to draw a heat map.
 <!--# 获取地理信息
 省级精度的数据可以在python中通过省份名称直接绘制分布图。但我们需要县级精度数据，这就需要使用百度地图的API来获取每一个县的经纬度数据，再通过经纬度数据绘制热力图。-->
+
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/heatmap1.ipynb' | relative_url %}
 {% capture notebook_exists %}{% file_exists assets/jupyter/heatmap1.ipynb %}{% endcapture %}
@@ -55,8 +56,6 @@ In Python, it is possible to draw distribution maps with provincial-level accura
   <p>Sorry, the notebook you are looking for does not exist.</p>
 {% endif %}
 {:/nomarkdown}
-
->The method of obtaining latitude and longitude has been adapted according to [StimuMing's approach](https://www.cnblogs.com/fole-del/p/14810401.html).
 
 The final inclusion of latitude and longitude data should be as follows:
 
@@ -70,7 +69,7 @@ The final inclusion of latitude and longitude data should be as follows:
 | Yunnan Province Lianghe County     | 98.30313363    | 24.81078446   |
 | Yunnan Province Simao City         | 100.9835551    | 22.79249798   |
 | ...                           | ...             | ...            |
-
+>The method of obtaining latitude and longitude has been adapted according to [StimuMing's approach](https://www.cnblogs.com/fole-del/p/14810401.html).
 #### Alternative Methods
 Certainly, if high precision is not a requisite or if the quantity of data points is amenable to manual or visual inspection, one might consider employing GPT to generate latitude and longitude coordinates. However, it is advisable to construct a prompt that encourages GPT to strive for maximum accuracy or to reference publicly available data sources. 
 
