@@ -113,4 +113,4 @@ The observed distribution pattern raises several pertinent questions for investi
 5. How might this distribution pattern evolve over time, and what are the potential implications for cultural sustainability and national identity?
 
 This spatial analysis provides a foundation for more nuanced investigations into the complex relationships between geography, economics, ethnicity, and cultural heritage in the Chinese context.
-{% endraw %}
+
