@@ -27,12 +27,7 @@ Make your photos 1/3, 2/3, or full width.
 
 Embed the heatmap using an iframe:
 
-<div class="row justify-content-sm-center">
-    <div class="col-sm-12 mt-3 mt-md-0">
-        <iframe src="assets/html/china_cities_map_test.html" width="100%" height="800" frameborder="0" style="border:none;"></iframe>
-    </div>
-</div>
-
+<iframe src="https://haotianzhao99.github.io/assets/html/china_cities_map_test.html" width="100%" height="500px" style="border:none;"></iframe>
 
 To give your project a background in the portfolio page, just add the img tag to the front matter like so:
 
