@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Distribution \nHeat Map
+title: Distribution Heat Map
 description: Generating a Heatmap Illustrating the Spatial Distribution of China's Intangible Cultural Heritage through Python.
 img: assets/img/project/heat.png
 importance: 1
