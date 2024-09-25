@@ -11,7 +11,7 @@ China's Intangible Cultural Heritage (ICH) refers to cultural heritage that exis
 
 The United Nations Educational, Scientific and Cultural Organization (UNESCO) has inscribed 43 elements from China on its [Lists of the Intangible Cultural Heritage of Humanity](https://ich.unesco.org/en/lists). Since 2006, the Chinese government has announced five batches of nationally representative ICH projects, currently totaling 3,000 entries. The national-level recognition and documentation of ICH are crucial for its protection, transmission, and dissemination.
 
-In a data journalism research project aimed at exploring the relationship between ICH and economic development in rural and remote areas, we attempted to utilize 3,610 entries recorded on the "[China Intangible Cultural Heritage · China Intangible Cultural Heritage Digital Museum](https://www.ihchina.cn/project#target1)" Using the [Baidu Map API](https://lbsyun.baidu.com/), they geocoded these data to county-level precision, subsequently generating a heat map of ICH distribution.
+In a data journalism research project aimed at exploring the relationship between ICH and economic development in rural and remote areas, we attempted to utilize 3,610 entries recorded on the "[China Intangible Cultural Heritage · China Intangible Cultural Heritage Digital Museum](https://www.ihchina.cn/project#target1)" Using the [Baidu Map API](https://lbsyun.baidu.com/), we geocoded these data to county-level precision, subsequently generating a heat map of ICH distribution.
 
 <!--
 中国的非物质文化遗产（Intangible Cultural Heritage, ICH）是指那些不以物质形态存在，而是以非物质形态传承的文化遗产。这些遗产涵盖了广泛的文化实践，包括口头传统、表演艺术、社会风俗、节日庆典以及传统手工艺技能等。从概念上讲，非物质文化遗产可以被视为一种无形的文化遗产，它包含了诸如京剧、昆曲、剪纸、刺绣、中医以及中草药等传统知识。
@@ -24,7 +24,7 @@ In a data journalism research project aimed at exploring the relationship betwee
 -->
 
 # Data crawling
-The data source is the list of nationally representative ICH projects (including 3,610 sub-items) recorded on the China Intangible Cultural Heritage Network. Through web scraping, information such as the name, category, time, reporting area or unit, and the organization responsible for protecting the cultural heritage can be obtained for each item. To create the distribution heat map, we retained the reporting areas. An example of county-level precision data is as follows:
+The data source is the list of nationally representative ICH projects (including 3,610 sub-items) recorded on the China Intangible Cultural Heritage Network. Through web scraping, information such as the name, category, time, nominating region or unit, and the organization responsible for protecting the cultural heritage can be obtained for each item. To create the distribution heat map, we retained the nominating region. An example of county-level precision data is as follows:
 
 <!--
 # 数据获取与清洗
