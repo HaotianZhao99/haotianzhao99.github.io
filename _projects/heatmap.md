@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Heatmap Visualization of China's Intangible Cultural Heritage 
+title: Heatmap Visualization of Intangible Cultural Heritage 
 description: This project uses Python and Baidu Map API to create a spatial heatmap visualization of China's Intangible Cultural Heritage (ICH), revealing its distribution across the country at the county level.
 img: assets/img/project/heat.png
 importance: 1
