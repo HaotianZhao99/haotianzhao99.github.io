@@ -22,7 +22,7 @@ Proportional Symbol Chart 可以通过比较比例的大小，来对数据的分
 -->
 
 # Data Collection and Cleaning
-Policy data related to Intangible Cultural Heritage (ICH) was primarily sourced from the China Intangible Cultural Heritage Network. This website has compiled various national, ministerial, and local regulatory documents concerning ICH since 2000. We used web scraping techniques to collect these regulatory documents. Some of the entries are as follows:
+Policy data related to Intangible Cultural Heritage (ICH) was primarily sourced from the [China Intangible Cultural Heritage Network](https://www.ihchina.cn/zhengce). This website has compiled various national, ministerial, and local regulatory documents concerning ICH since 2000. We used web scraping techniques to collect these regulatory documents. Some of the entries are as follows:
 
 
 |  Document Title   | Year  |
@@ -123,3 +123,13 @@ Finally, the plotted image looks as follows.
     </div>
 </div>
 
+It looks a bit messy. Let's place the National(国家级) and Ministerial(省部级) levels at the bottom, and arrange the other provinces in order to form the following image.
+
+```r
+datap$province <- factor(datap$province, levels = c("国家级", "部级", setdiff(unique(datap$省份), c("国家级", "部级"))))
+
+<div class="row">
+    <div class="col-sm mt-3 mt-md-0">
+        {% include figure.liquid loading="eager" path="assets/img/project/project2/proplot3.png" title="proportional symbol chart" class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
+    </div>
+</div>
