@@ -96,7 +96,7 @@ We can further enhance the appearance of the image by adjusting the parameters.
 ```r
 #Convert to a factor to adjust the size of the points
 datap$count <- as.factor(datap$count) 
-datap$col <- factor(datap$count, level = 1:9, ordered = TRUE)#Divide into 9 levels, one level for one regulation
+datap$col <- factor(datap$count, level = 1:9, ordered = TRUE)  #Divide into 9 levels, one level for one regulation
 
 plot <- ggplot(datap, aes(x = year, y = province, size = col)) +
   geom_point(color = "#87481f", alpha = 0.5) +  # Set the color of all points to the specified color.
