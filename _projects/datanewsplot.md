@@ -1,8 +1,8 @@
 ---
 layout: page
 title: Proportional Symbol Charts in ggplot2
-description: with background image
-img: assets/img/12.jpg
+description: Using R's ggplot2, we create a Proportional Symbol Chart to illustrate ICH policy patterns across Chinese provinces over time, offering detailed control for enhanced data representation.
+img: assets/img/project/plot.png
 importance: 2
 category: work
 related_publications: false
@@ -23,6 +23,8 @@ Proportional Symbol Chart 可以通过比较比例的大小，来对数据的分
 
 # Data Collection and Cleaning
 Policy data related to Intangible Cultural Heritage (ICH) was primarily sourced from the China Intangible Cultural Heritage Network. This website has compiled various national, ministerial, and local regulatory documents concerning ICH since 2000. We used web scraping techniques to collect these regulatory documents. Some of the entries are as follows:
+
+
 |  Document Title   | Year  |
 |  ----  | ----  |
 | Notice of the People's Government of Tibet Autonomous Region on Announcing the Sixth Batch of Representative Projects of Intangible Cultural Heritage at the Autonomous Region Level  | 2024 |
@@ -30,7 +32,10 @@ Policy data related to Intangible Cultural Heritage (ICH) was primarily sourced 
 | Notice of Shanghai Municipal People's Government on Announcing the Seventh Batch of Shanghai Municipal Intangible Cultural Heritage Representative Project List and the Extended Project List  | 2024 |
 | ...  | ...|
 
+
 After analyzing the data, we found that geographical information is typically contained within the first few characters of the document titles. By extracting the names of provinces, autonomous regions, or municipalities (or simply extracting the first two Chinese characters), we were able to create a streamlined dataset containing provinces and years:
+
+
 |  Region   | Year  |
 |  ----  | ----  |
 | Tibet | 2024 |
@@ -61,7 +66,7 @@ After analyzing the data, we found that geographical information is typically co
 # Visualization with ggplot2
 
 Firstly, we need to tally the number of regulatory documents enacted by each province every year.
-````markdown
+```r
 library(readxl)
 library(dplyr)
 library(ggplot2)
@@ -70,24 +75,25 @@ data <- read_xlsx("data.xlsx")
 data <- data %>%
   group_by(year, province) %>%
   summarise(count = n(), .groups = 'drop')
-````
+```
 Therefore, we have generated data on the number of regulations enacted each year and by each province. Next, we can proceed to create a Proportional Symbol Chart.
 
-````
+```r
 ggplot(datap, aes(x = date, y = province, size = count)) +
   geom_point() +
   theme_minimal() +
   labs(x = "Year", y = "Province")
-````
+```
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/project/project2/proplog1.png" title="proportional symbol chart" class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
+        {% include figure.liquid loading="eager" path="assets/img/project/project2/proplot1.png" title="proportional symbol chart" class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
     </div>
 </div>
 
 We can further enhance the appearance of the image by adjusting the parameters.
-````
+
+```r
 #Convert to a factor to adjust the size of the points
 datap$count <- as.factor(datap$count) 
 datap$col <- factor(datap$count, level = 1:9, ordered = TRUE)#Divide into 9 levels, one level for one regulation
@@ -108,12 +114,12 @@ plot <- ggplot(datap, aes(x = year, y = province, size = col)) +
   guides(size = guide_legend(title = " "))
 
 print(plot)
-````
+```
 Finally, the plotted image looks as follows.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/project/project2/proplog2.png" title="proportional symbol chart" class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
+        {% include figure.liquid loading="eager" path="assets/img/project/project2/proplot2.png" title="proportional symbol chart" class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
     </div>
 </div>
 
