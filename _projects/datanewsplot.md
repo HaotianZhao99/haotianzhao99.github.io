@@ -115,7 +115,7 @@ plot <- ggplot(datap, aes(x = year, y = province, size = col)) +
 
 print(plot)
 ```
-Finally, the plotted image looks as follows.
+The plotted image looks as follows.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -123,10 +123,11 @@ Finally, the plotted image looks as follows.
     </div>
 </div>
 
-It looks a bit messy. Let's place the National(国家级) and Ministerial(省部级) levels at the bottom, and arrange the other provinces in order to form the following image.
+It looks a bit messy？ Let's place the National(国家级) and Ministerial(省部级) levels at the bottom, and arrange the other provinces in order to form the following image.
 
 ```r
 datap$province <- factor(datap$province, levels = c("国家级", "部级", setdiff(unique(datap$省份), c("国家级", "部级"))))
+```
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
