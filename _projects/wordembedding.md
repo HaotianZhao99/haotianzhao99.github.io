@@ -18,11 +18,26 @@ Word embedding is a technique in natural language processing (NLP) and machine l
 
 Suppose we are calculating a text that contains a total of four words: cat, dog, cow, sheep. Each position in the vector represents a word.
 
-<div class="row">
-    <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/project/wordembedding/word1.png" title="word embedding" class="img-fluid rounded z-depth-1" style="width: 20%; height: auto;" %}
+<div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
+        <figure class="figure">
+            {% include figure.liquid loading="eager" path="assets/img/project/wordembedding/word1.png" title="word embedding" class="img-fluid rounded z-depth-1" %}
+            <figcaption class="figure-caption text-center">Word Embedding</figcaption>
+        </figure>
     </div>
 </div>
+
+<style>
+    .figure {
+        max-width: 100%;
+        height: auto;
+    }
+    .figure img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+
 <div class="caption">
     When words are semantically similar, they are also close in space.
 </div>
