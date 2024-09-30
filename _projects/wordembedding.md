@@ -5,7 +5,7 @@ description: This project uses word embedding technology to quantitatively analy
 img: assets/img/project/wordembedding.png
 importance: 2
 category: work
-related_publications: true
+related_publications: false
 ---
 
 
@@ -30,16 +30,13 @@ Suppose we are calculating a text that contains a total of four words: cat, dog,
 
 A standard approach to measure the similarity between embedding vectors is to compute their cosine similarity. To measure the similarity between two embedding vectors using cosine similarity, the formula is:
 
-\begin{equation}
-\[
+$$
 \text{cosine similarity}(\vec{A}, \vec{B}) = \frac{\vec{A} \cdot \vec{B}}{\|\vec{A}\| \|\vec{B}\|}
-\]
-\end{equation}
-
+$$
 where:
-- $\vec{A}$ and $\vec{B}$ are the embedding vectors.
-- $\vec{A} \cdot \vec{B}$ is the dot product of vectors $\vec{A}$ and $\vec{B}$.
-- $\|\vec{A}\|$ and $\|\vec{B}\|$ are the magnitudes (or norms) of vectors $\vec{A}$ and $\vec{B}$, respectively.
+- $$ \vec{A} $$ and $$ \vec{B} $$ are the embedding vectors.
+- $$ \vec{A} \cdot \vec{B} $$ is the dot product of vectors $$ \vec{A} $$ and $$ \vec{B} $$.
+- $$ \|\vec{A}\| $$ and $$ \|\vec{B}\| $$ are the magnitudes (or norms) of vectors $$ \vec{A} $$ and $$ \vec{B} $$, respectively.
 
 # How Terrifying the Dream Is: A Word Embedding Approach
 
