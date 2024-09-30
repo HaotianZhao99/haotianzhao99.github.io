@@ -22,7 +22,7 @@ Suppose we are calculating a text that contains a total of four words: cat, dog,
     <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
         <figure class="figure">
             {% include figure.liquid loading="eager" path="assets/img/project/wordembedding/word1.png" title="word embedding" class="img-fluid rounded z-depth-1" %}
-            <figcaption class="figure-caption text-center">Word Embedding</figcaption>
+            <figcaption class="figure-caption text-center">When words are semantically similar, they are also close in space.</figcaption>
         </figure>
     </div>
 </div>
@@ -38,16 +38,13 @@ Suppose we are calculating a text that contains a total of four words: cat, dog,
     }
 </style>
 
-<div class="caption">
-    When words are semantically similar, they are also close in space.
-</div>
-
 
 A standard approach to measure the similarity between embedding vectors is to compute their cosine similarity. To measure the similarity between two embedding vectors using cosine similarity, the formula is:
 
 $$
 \text{cosine similarity}(\vec{A}, \vec{B}) = \frac{\vec{A} \cdot \vec{B}}{\|\vec{A}\| \|\vec{B}\|}
 $$
+
 where:
 - $$ \vec{A} $$ and $$ \vec{B} $$ are the embedding vectors.
 - $$ \vec{A} \cdot \vec{B} $$ is the dot product of vectors $$ \vec{A} $$ and $$ \vec{B} $$.
@@ -67,11 +64,11 @@ Using a rich textual [dataset](https://www.kaggle.com/datasets/sarikakv1221/drea
 把这些研究是如何做的写一下。
 最后，我们也可以使用词嵌入，来测量一个梦的文本的不同属性。-->
 
-When delving into textual data describing dreams, we can employ word embedding models. Initially, algorithms such as Word2vec or GloVe are utilized to transform all dream-related textual data into word vectors within a high-dimensional space. These word vectors capture the semantic and syntactic information of words, thereby laying the groundwork for subsequent analysis.
+When delving into textual data describing dreams, we can employ word embedding models. Algorithms such as Word2vec or GloVe are utilized to transform all dream-related textual data into word vectors within a high-dimensional space. These word vectors capture the semantic and syntactic information of words, thereby laying the groundwork for subsequent analysis.
 
 In some studies, we have observed that through word embedding techniques, scholars are able to measure the degree of stigmatization of diseases [(Best & Arseniev-Koehler, 2023)](https://journals.sagepub.com/doi/10.1177/00031224231197436), the level of novelty in texts [(Zhou, 2022)](https://journals.sagepub.com/doi/10.1177/00031224221123030), and the morality of the political rhetoric [(Kraft & Klemmensen, 2024)](https://www.cambridge.org/core/journals/british-journal-of-political-science/article/lexical-ambiguity-in-political-rhetoric-why-morality-doesnt-fit-in-a-bag-of-words/BF369893D8B6B6FDF8292366157D84C1), among other aspects.
 
-Following their approaches, once the model training is complete, we can conduct a series of exploratory analyses to assess the comprehensiveness of concepts within dream descriptions. For instance, we can calculate the cosine similarity between word vectors to explore how common concepts in dreams are interrelated. Furthermore, by analyzing the average of word vectors, we can evaluate the emotional tendencies and themes of the entire dream narrative.
+Following their approaches, once the model training is complete, we can conduct a series of exploratory analyses to assess the dream descriptions. For instance, we can calculate the cosine similarity between word vectors to explore how common concepts in dreams are interrelated. Furthermore, by analyzing the average of word vectors, we can evaluate the emotional tendencies and themes of the entire dream narrative.
 
 
 ## Training our Own Embedding
@@ -120,6 +117,6 @@ Firstly, the constrained scope of our training corpus may impede the model's abi
 
 Secondly, the reliance on a single lexical item—"terrifying"—as the sole metric for terror assessment presents an oversimplified approach to a complex psychological phenomenon. Dreams often evoke a spectrum of emotions and sensations that may not be adequately captured by a unidimensional measure.
 
-To enhance the robustness and validity of our model, future iterations could rely on pre-trained word embeddings (GloVe), or incorporate multi-dimensional analysis techniques. Drawing upon established research in oneirology and psycholinguistics, we propose integrating lexicon-based methods to create a more comprehensive framework for dream attribute measurement. This approach would involve developing a curated dictionary of terror-related terms, accounting for various intensities and manifestations of fear in dream experiences.
+To enhance the robustness and validity of our model, future iterations could rely on pre-trained word embeddings (GloVe), or incorporate pre-trained large language models like BERT, GPT, or Gemma through transfer learning and fine-tuning could significantly improve the model's language understanding capabilities. Optimizing the model architecture by introducing attention mechanisms or adopting Transformer-based structures would allow for better capture of complex contextual relationships. Expanding and augmenting the training dataset, combined with advanced regularization methods and curriculum learning strategies, could further enhance the model's generalization ability. Finally, incorporating domain-specific knowledge and targeted fine-tuning would enable the model to better adapt to specific task requirements. The combined application of these optimization measures would substantially improve the model's performance across various complex language understanding tasks, making it more reliable and efficient.
 
 Furthermore, the incorporation of advanced natural language processing techniques, such as sentiment analysis and emotion detection algorithms, could provide a more nuanced understanding of the emotional landscape within dream narratives. This multifaceted approach would not only improve the accuracy of terror quantification but also offer insights into the broader emotional and cognitive aspects of dream content.
