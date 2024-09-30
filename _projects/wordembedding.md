@@ -1,6 +1,6 @@
 ---
 layout: page
-title: How Terrifying the Dream Is:A Word Embedding Approach
+title: How Terrifying the Dream Is：A Word Embedding Approach
 description: This project uses word embedding technology to quantitatively analyze and measure the emotional tone of dream descriptions, revealing the underlying sentiments of our subconscious narratives.
 img: assets/img/project/wordembedding.png
 importance: 2
@@ -20,7 +20,7 @@ Suppose we are calculating a text that contains a total of four words: cat, dog,
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/project/wordembedding/word1.png" title="word embedding" class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
+        {% include figure.liquid loading="eager" path="assets/img/project/wordembedding/word1.png" title="word embedding" class="img-fluid rounded z-depth-1" style="width: 20%; height: auto;" %}
     </div>
 </div>
 <div class="caption">
@@ -30,16 +30,16 @@ Suppose we are calculating a text that contains a total of four words: cat, dog,
 
 A standard approach to measure the similarity between embedding vectors is to compute their cosine similarity. To measure the similarity between two embedding vectors using cosine similarity, the formula is:
 
-
+\begin{equation}
 \[
 \text{cosine similarity}(\vec{A}, \vec{B}) = \frac{\vec{A} \cdot \vec{B}}{\|\vec{A}\| \|\vec{B}\|}
 \]
+\end{equation}
 
 where:
-- \(\vec{A}\) and \(\vec{B}\) are the embedding vectors.
-- \(\vec{A} \cdot \vec{B}\) is the dot product of vectors \(\vec{A}\) and \(\vec{B}\).
-- \(\|\vec{A}\|\) and \(\|\vec{B}\|\) are the magnitudes (or norms) of vectors \(\vec{A}\) and \(\vec{B}\), respectively.
-
+- $\vec{A}$ and $\vec{B}$ are the embedding vectors.
+- $\vec{A} \cdot \vec{B}$ is the dot product of vectors $\vec{A}$ and $\vec{B}$.
+- $\|\vec{A}\|$ and $\|\vec{B}\|$ are the magnitudes (or norms) of vectors $\vec{A}$ and $\vec{B}$, respectively.
 
 # How Terrifying the Dream Is: A Word Embedding Approach
 
