@@ -15,7 +15,7 @@ profile:
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
-social: true # includes social icons at the bottom of the page
+social: false # includes social icons at the bottom of the page
 ---
 
 I am currently pursuing my Master's degree in the School of Journalism and Information Communication at Huazhong University of Science and Technology (HUST), under the supervision of Professor Mingxin Zhang. **I am seeking PhD opportunities for Fall 2025**, with research interests lying at the intersection of Political Communication, Computational Methods, and Artificial Intelligence.
