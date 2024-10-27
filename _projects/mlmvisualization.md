@@ -1,11 +1,11 @@
 ---
 layout: page
 title: Visulization of Multi-Level Modeling
-description: with background image
+description: A visual guide to multilevel modeling, showing how MLM handles nested data structures in cross-national research.
 img: assets/img/project/mlm/mlm2.gif
 importance: 2
 category: work
-related_publications: true
+related_publications: false
 ---
 
 
@@ -13,7 +13,9 @@ related_publications: true
 Multilevel modeling (MLM), also known as hierarchical linear modeling or mixed-effects modeling, is a sophisticated statistical approach designed to analyze hierarchically structured or nested data. This method has become increasingly vital in social science research, particularly when dealing with data organized across multiple levels of analysis.
 
 ## Simpson's Paradox and the Need for MLM
-One of the most compelling reasons to employ multilevel modeling is its ability to address Simpson's paradox. This statistical phenomenon occurs when a trend that appears in several groups of data disappears or reverses when these groups are combined.
+One of the most compelling reasons to employ multilevel modeling (MLM) is its ability to address Simpson's paradox, a counterintuitive statistical phenomenon that highlights the complex nature of hierarchical data structures. This paradox occurs when a trend or relationship that appears consistently in several groups of data either disappears or, more strikingly, reverses direction when these groups are combined or analyzed at an aggregate level.
+
+The paradox fundamentally demonstrates how relationships between variables can be profoundly influenced by the level at which data is analyzed. It reveals that what appears true at one level of analysis may be false at another, challenging our intuitive understanding of causality and correlation. This makes it particularly problematic for researchers who need to draw accurate conclusions from nested or hierarchically structured data.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -24,17 +26,9 @@ One of the most compelling reasons to employ multilevel modeling is its ability 
 Source: [Grigg (2018)](https://towardsdatascience.com/simpsons-paradox-and-interpreting-data-6a0443516765)
 
 
-Let's consider a clear example:
-The University Study Time Paradox
-Imagine a study examining the relationship between study time and exam scores across different universities. At first glance, the aggregated data might show a counterintuitive negative relationship - more study time associated with lower scores. This apparent contradiction can be explained through multilevel analysis:
+Multilevel modeling's value becomes particularly clear when we consider real-world scenarios like the famous 1975 University of California, Berkeley graduate admissions study. This case perfectly illustrates how data analyzed at different levels can tell seemingly contradictory stories. When researchers examined the aggregate admission rates, they found what appeared to be significant gender discrimination - male applicants had a notably higher overall admission rate (44%) compared to female applicants (35%). 
 
-Level 1 (Student Level): Individual student study time and exam scores
-Level 2 (University Level): Institutional factors such as exam difficulty and teaching quality
-
-When analyzed using MLM, we often discover that:
-
-Within each university, there's a positive relationship between study time and exam scores
-Universities with more challenging curricula (where students study longer) tend to have lower average scores
+However, when the analysis was conducted at the departmental level, this pattern not only disappeared but actually reversed in many cases, with women showing higher admission rates in most individual departments. This apparent contradiction emerged because the analysis failed to account for a crucial hierarchical structure in the data: departments varied significantly in their competitiveness, and female applicants tended to apply to more competitive departments, particularly in the social sciences, while male applicants were more likely to seek admission to less competitive departments, such as those in the natural sciences. This scenario demonstrates why multilevel modeling is essential - it allows researchers to simultaneously account for both individual-level effects and higher-level contextual factors (in this case, departmental differences), preventing misleading conclusions that might arise from analyzing data at only one level. By incorporating the hierarchical nature of the data directly into the analysis, MLM provides a more accurate and nuanced understanding of complex relationships, helping researchers avoid the pitfalls of Simpson's Paradox and leading to more informed decision-making.
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -106,7 +100,7 @@ The ICC represents the proportion of variance at the group level:
 $ICC = \frac{\tau_{00}}{\tau_{00} + \sigma^2}$
 
 
-## This equations help us understand:
+## These equations help us understand:
 
 How effects can vary across groups (random effects)
 How variables at different levels interact (cross-level interactions)
@@ -116,7 +110,7 @@ The correlation between random effects ($\tau_{01}$)
 
 
 # MLM in Communication Research
-The application of MLM extends well beyond educational research. In communication studies, it has proven particularly valuable for cross-national research. For example:
+The application of MLM has proven particularly valuable for cross-national research in communication studies. For example:
 Cross-National Social Media Studies
 
 Diehl, T., Huber, B., Gil de Zúñiga, H., & Liu, J. (2021). Social Media and Beliefs about Climate Change: A Cross-National Analysis of News Use, Political Ideology, and Trust in Science. International Journal of Public Opinion Research, 33(2), 197–213. https://doi.org/10.1093/ijpor/edz040
@@ -127,7 +121,7 @@ Diehl, T., Huber, B., Gil de Zúñiga, H., & Liu, J. (2021). Social Media and Be
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/project/mlm/mlm3.png" title=" " class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
+        {% include figure.liquid loading="eager" path="assets/img/project/mlm/mlm3.jpeg" title=" " class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
     </div>
 </div>
 
@@ -142,8 +136,8 @@ Chan, M., & Yi, J. (2024). Social Media Use and Political Engagement in Polarize
 - Explored cross-level interaction effects
 
 
-# The Power of Random Slopes
-One of MLM's most powerful features is its ability to accommodate random coefficients. This means that when conducting cross-national analyses, we can observe how the relationship between variables varies across different national contexts. The effect size and direction of relationships can differ significantly from country to country, providing a more nuanced understanding of social phenomena.
+>The Power of Random Slopes
+>One of MLM's most powerful features is its ability to accommodate random coefficients. This means that when conducting cross-national analyses, we can observe how the relationship between variables varies across different national contexts. The effect size and direction of relationships can differ significantly from country to country, providing a more nuanced understanding of social phenomena.
 
 
 # Visualizing Random Slopes in R: A Case Study with World Values Survey Data
@@ -151,8 +145,9 @@ When conducting cross-national research using MLM, visualizing random slopes bec
 
 
 ## Introduction to the Dataset
-We'll be working with Wave 7 of the World Values Survey (WVS), focusing on a specific subset of variables to examine how social media use influences people's perceptions of science and technology. From the rich WVS dataset, we extracted just four key variables:
+We'll walk through a practical example of multilevel modeling using real-world data from Wave 7 of the World Values Survey (WVS). The WVS is a treasure trove of global public opinion data, covering everything from political beliefs to social values across numerous countries. While the full dataset is extensive and could support complex research questions, for our demonstration purposes, we'll focus on a straightforward yet interesting relationship: how social media use might influence people's perceptions of science and technology.
 
+We selected just four key variables from this rich dataset. 
 - Respondent ID (identifier for each individual)
 - Country Code (identifying the country of each respondent)
 - Social Media Use (frequency of social media usage)
@@ -266,15 +261,15 @@ ggplot(wvs_data, aes(smu)) +
 We start with an empty model (also called null model or intercept-only model) to understand how much variation in technology attitudes exists between countries versus within countries. 
 
 The model can be written as:
-\[
-Y_{ij} = \gamma_{00} + U_{0j} + R_{ij}
-\]
+
+$$ Y_{ij} = \gamma_{00} + U_{0j} + R_{ij} $$
+
 Where:
 
-- \( Y_{ij} \): Technology attitude score for individual \( i \) in country \( j \)
-- \( \gamma_{00} \): Overall mean technology attitude across all countries
-- \( U_{0j} \): Random effect for country \( j \) (country-level variance)
-- \( R_{ij} \): Individual-level residual
+- $$ Y_{ij} $$: Technology attitude score for individual $$ i $$ in country $$ j $$
+- $$ \gamma_{00} $$: Overall mean technology attitude across all countries
+- $$ U_{0j} $$: Random effect for country $$ j $$ (country-level variance)
+- $$ R_{ij} $$: Individual-level residual
 
 Let's fit this model:
 
@@ -435,7 +430,7 @@ This coefficient is hard to interpret on its own. So let's try to visulize the r
 In this part, we'll explore four different methods to visualize multilevel modeling results, each offering unique insights into our data.
 
 ### Method 1: Effect Size Visualization with Bar Plots
-Our first approach follows Trevor Diehl's method, which effectively displays both the magnitude and direction of effects.
+Our first approcah adopts the method of Diehl et al. (2021) to display both the magnitude and direction of effects.
 
 ```r
 
@@ -507,7 +502,7 @@ ggplot(wvs_data, aes(smu, predicted)) +
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/project/mlm/mlm7.png" title=" " class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
+        {% include figure.liquid loading="eager" path="assets/img/project/mlm/mlm7.png" title=" " class="img-fluid rounded z-depth-1" style="width: 30%; height: auto;" %}
     </div>
 </div>
 
