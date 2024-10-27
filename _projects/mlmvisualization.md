@@ -97,7 +97,10 @@ Level-2 variances:
 
 ## Intraclass Correlation Coefficient (ICC):
 The ICC represents the proportion of variance at the group level:
-$ICC = \frac{\tau_{00}}{\tau_{00} + \sigma^2}$
+$$
+\text{ICC} = \frac{\tau_{00}}{\tau_{00} + \sigma^2}
+$$
+
 
 
 ## These equations help us understand:
