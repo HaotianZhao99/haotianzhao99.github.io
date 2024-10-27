@@ -2,16 +2,23 @@
 layout: about
 title: home
 permalink: /
-subtitle: <a href='#'>Affiliations</a>. Address. Contacts. Motto. Etc.
+subtitle:  
 
 profile:
   align: right
   image: zhaohaotian.jpg
-  image_circular: false # crops the image to make it circular
+  image_circular: false
   more_info: >
-    <p>School of Journalism and <br>Information Communication</p>
-    <p>Huazhong University of <br>Science and Technology</p>
-    <p>Wuhan, Hubei, China</p>
+    <p style="font-family: 'Times New Roman', serif; font-size: 16px;">School of Journalism and Information Communication</p>
+    <p style="font-family: 'Times New Roman', serif; font-size: 16px;">Huazhong University of Science and Technology</p>
+    <p style="font-family: 'Times New Roman', serif; font-size: 16px;">Wuhan, Hubei, China</p>
+    <p style="font-family: 'Times New Roman', serif; font-size: 16px;">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="vertical-align: middle; margin-right: 5px;">
+        <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
+        <polyline points="22,6 12,13 2,6"></polyline>
+      </svg>
+      zhaohaotian99@gmail.com
+    </p>
 
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
