@@ -44,53 +44,61 @@ Universities with more challenging curricula (where students study longer) tend 
 
 Source: [Split](https://www.split.io/glossary/simpsons-paradox/)
 
-
 # Multilevel Modeling
+
 Let's consider a two-level model:
-Level-1 Model (Individual Level):
-$Y_{ij} = \beta_{0j} + \beta_{1j}X_{ij} + e_{ij}$
+
+## Level-1 Model (Individual Level):
+
+$$ Y_{ij} = \beta_{0j} + \beta_{1j}X_{ij} + e_{ij} $$
+
 Where:
+- $$ Y_{ij} $$ is the outcome for individual $$i$$ in group $$j$$
+- $$ X_{ij} $$ is the predictor variable for individual $$i$$ in group $$j$$
+- $$ \beta_{0j} $$ is the intercept for group $$j$$
+- $$ \beta_{1j} $$ is the slope for group $$j$$
+- $$ e_{ij} $$ is the individual-level residual, typically assumed $$ e_{ij} \sim N(0, \sigma^2) $$
 
-$Y_{ij}$ is the outcome for individual $i$ in group $j$
-$X_{ij}$ is the predictor variable for individual $i$ in group $j$
-$\beta_{0j}$ is the intercept for group $j$
-$\beta_{1j}$ is the slope for group $j$
-$e_{ij}$ is the individual-level residual, typically assumed $e_{ij} \sim N(0, \sigma^2)$
+## Level-2 Model (Group Level):
 
-Level-2 Model (Group Level):
 For random intercepts:
-$\beta_{0j} = \gamma_{00} + \gamma_{01}W_j + u_{0j}$
+$$ \beta_{0j} = \gamma_{00} + \gamma_{01}W_j + u_{0j} $$
+
 For random slopes:
-$\beta_{1j} = \gamma_{10} + \gamma_{11}W_j + u_{1j}$
+$$ \beta_{1j} = \gamma_{10} + \gamma_{11}W_j + u_{1j} $$
+
 Where:
+- $$ W_j $$ is a group-level predictor
+- $$ \gamma_{00} $$ is the overall intercept
+- $$ \gamma_{10} $$ is the overall slope
+- $$ \gamma_{01} $$ and $$ \gamma_{11} $$ are the effects of group-level predictor on intercepts and slopes
+- $$ u_{0j} $$ and $$ u_{1j} $$ are group-level random effects, typically assumed:
 
-$W_j$ is a group-level predictor
-$\gamma_{00}$ is the overall intercept
-$\gamma_{10}$ is the overall slope
-$\gamma_{01}$ and $\gamma_{11}$ are the effects of group-level predictor on intercepts and slopes
-$u_{0j}$ and $u_{1j}$ are group-level random effects, typically assumed:
+$$ \begin{pmatrix} u_{0j} \\ u_{1j} \end{pmatrix} \sim N\begin{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix}, \begin{pmatrix} \tau_{00} & \tau_{01} \\ \tau_{01} & \tau_{11} \end{pmatrix} \end{pmatrix} $$
 
-$\begin{pmatrix} u_{0j} \ u_{1j} \end{pmatrix} \sim N\begin{pmatrix} \begin{pmatrix} 0 \ 0 \end{pmatrix}, \begin{pmatrix} \tau_{00} & \tau_{01} \ \tau_{01} & \tau_{11} \end{pmatrix} \end{pmatrix}$
-Combined Mixed Model:
+## Combined Mixed Model:
+
 Substituting the level-2 equations into the level-1 equation yields:
-$Y_{ij} = [\gamma_{00} + \gamma_{01}W_j + u_{0j}] + [\gamma_{10} + \gamma_{11}W_j + u_{1j}]X_{ij} + e_{ij}$
-$Y_{ij} = \gamma_{00} + \gamma_{01}W_j + \gamma_{10}X_{ij} + \gamma_{11}W_jX_{ij} + [u_{0j} + u_{1j}X_{ij} + e_{ij}]$
+
+$$ Y_{ij} = [\gamma_{00} + \gamma_{01}W_j + u_{0j}] + [\gamma_{10} + \gamma_{11}W_j + u_{1j}]X_{ij} + e_{ij} $$
+
+$$ Y_{ij} = \gamma_{00} + \gamma_{01}W_j + \gamma_{10}X_{ij} + \gamma_{11}W_jX_{ij} + [u_{0j} + u_{1j}X_{ij} + e_{ij}] $$
+
 This combined equation shows:
+- Fixed effects: $$ \gamma_{00}, \gamma_{01}, \gamma_{10}, \gamma_{11} $$
+- Random effects: $$ u_{0j}, u_{1j} $$
+- Cross-level interaction: $$ \gamma_{11}W_jX_{ij} $$
 
-Fixed effects: $\gamma_{00}, \gamma_{01}, \gamma_{10}, \gamma_{11}$
-Random effects: $u_{0j}, u_{1j}$
-Cross-level interaction: $\gamma_{11}W_jX_{ij}$
+## Variance Components:
 
-Variance Components:
-The total variance in $Y_{ij}$ can be decomposed into:
+The total variance in $$ Y_{ij} $$ can be decomposed into:
 
-Level-1 variance: $\sigma^2$ (within-group)
+Level-1 variance: $$ \sigma^2 $$ (within-group)
+
 Level-2 variances:
-
-$\tau_{00}$ (random intercept variance)
-$\tau_{11}$ (random slope variance)
-$\tau_{01}$ (covariance between random intercepts and slopes)
-
+- $$ \tau_{00} $$ (random intercept variance)
+- $$ \tau_{11} $$ (random slope variance)
+- $$ \tau_{01} $$ (covariance between random intercepts and slopes)
 
 
 ## Intraclass Correlation Coefficient (ICC):
