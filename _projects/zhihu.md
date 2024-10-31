@@ -1,17 +1,19 @@
 ---
 layout: page
 title: Analyzing Content Controversy in Online Communities Using Word Embedding
-description: Using R's ggplot2, we create a Proportional Symbol Chart to illustrate ICH policy patterns across Chinese provinces over time, offering detailed control for enhanced data representation.
-img: assets/img/project/plot.png
+description: An experimental exploration of measuring controversy on Zhihu using word embeddings, revealing unexpected patterns in how controversial content drives user engagement.
+img: assets/img/project/zhihu.png
 importance: 2
 category: work
 related_publications: false
 ---
 How can we objectively identify and quantify controversy in online communities where controversial content often sparks heated discussions? This article introduces a word embedding-based approach to analyze the degree of controversy in social platform content and its relationship with user interactions.
 
-Our analysis is built upon the ZhihuRec Dataset, a comprehensive collection of interactions from Zhihu, China's leading knowledge-sharing platform. This rich dataset, collaboratively released by Tsinghua University and Zhihu, encompasses: around 100M interactions collected within 10 days, 798K users, 165K questions, 554K answers, 240K authors, 70K topics, and more than 501K user query logs. There are also descriptions of users, answers, questions, authors, and topics, which are anonymous. 
+Our analysis leverages the ZhihuRec Dataset, a comprehensive collection of user interactions from Zhihu (知乎), which can be considered China's equivalent to Quora. Like Quora, Zhihu is a question-and-answer platform where users can ask questions, provide answers, and engage with content through various interactions such as upvotes, downvotes, and comments. Both platforms share similar core features:
 
-What makes this dataset particularly valuable for controversy analysis is its sophisticated representation of textual content: each piece of text is encoded as a 64-dimensional word embedding vector, enabling direct mathematical comparison of semantic content. 
+This rich dataset, collaboratively released by Tsinghua University and Zhihu, encompasses: around 100M interactions collected within 10 days, 798K users, 165K questions, 554K answers, 240K authors, 70K topics, and more than 501K user query logs. There are also descriptions of users, answers, questions, authors, and topics, which are anonymous. 
+
+What makes this dataset particularly valuable for controversy analysis is its sophisticated representation of textual content: each piece of text is encoded as a 64-dimensional word embedding vector, enabling direct mathematical comparison of semantic content. While traditional controversy analysis often relies on manual coding or simple keyword matching, our word embedding approach offers a more nuanced and scalable method for identifying and measuring controversial content. This is particularly valuable in the context of knowledge-sharing platforms, where controversies often manifest through subtle differences in perspective rather than explicit confrontation.
 
 ## What Are Word Embeddings?
 
@@ -74,9 +76,8 @@ Having established our theoretical framework for analyzing controversy through w
 
 
 
-# Analysis of the Relationship Between Content Controversy and User Engagement: A Statistical Investigation
+# Analysis of the Relationship Between Content Controversy and User Engagement
 
-## Introduction and Methodology
 We conducted a comprehensive statistical analysis of 54,758 questions to investigate the relationship between content controversy and user engagement patterns. The analysis employed both Pearson and Spearman correlation coefficients to examine linear and non-linear relationships, complemented by descriptive statistics to understand the underlying distributions.
 
 ## Correlation Analysis Results
@@ -91,7 +92,7 @@ The controversy score distribution analysis reveals a predominantly moderate dis
 
 The engagement metrics demonstrate a characteristic long-tail distribution, with a mean of 8,070 interactions but a substantially larger standard deviation of 38,421. This highly skewed distribution is further illustrated by the stark contrast between the median engagement of 206 and the maximum of approximately 1.52 million interactions. This pattern aligns with the well-documented Pareto principle in social media engagement, where a small proportion of content attracts a disproportionately large share of user interactions.
 
-## Discussion
+## Summary
 
 Before drawing any final conclusions, we should acknowledge some important limitations of our analysis. Perhaps the most significant one is that we're working somewhat "blindly" here - we haven't actually looked at the real text content of these discussions. We're relying on word embeddings to capture different opinions, but this approach has its limitations:
 - Word embeddings might miss crucial context: While they're good at capturing semantic relationships, they might not fully grasp the nuanced ways people express opposing viewpoints. For instance, two comments might use similar words but express completely different opinions through tone, sarcasm, or complex reasoning.
