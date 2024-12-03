@@ -161,12 +161,12 @@
       {% capture entrymonth %}{{ " " }}{{ entry.month | capitalize }}{% endcapture %}
     {% endif %}
     {% if entry.type == 'article' %}
-      {% capture entrytype %}<em>{{ entry.journal }}</em>{% endcapture %}
-      {% if entry.note and entry.note contains "Under Review" %}
-        {% capture entryyear %}{{ " " }}{{ entry.note }}{% endcapture %}
-      {% else %}
-        {% capture entryyear %}{{ " " }}{{ entry.year }}{% endcapture %}
-      {% endif %}
+     {% capture entrytype %}<em>{{ entry.journal }}</em>{% endcapture %}
+     {% if entry.note and entry.note contains "Under Review" %}
+      {% capture entryyear %}{% endcapture %}
+     {% else %}
+      {% capture entryyear %}{{ " " }}{{ entry.year }}{% endcapture %}
+     {% endif %}
     {% endif %}
     {% if entry.location %}
       {% capture entrytype %}{{ entrytype }}{{ ", " }}{{ entry.location }}{% endcapture %}
