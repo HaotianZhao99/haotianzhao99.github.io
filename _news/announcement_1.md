@@ -5,4 +5,4 @@ inline: true
 related_posts: false
 ---
 
-Joined the ICA pre-conference Hackathon exploring dream classification using LLMs 🤖 - what an exciting experiment! ✨
+Joined the ICA pre-conference Hackathon exploring dream classification using LLMs 🤖 Had a blast coding with brilliant teammates - turning dreams into data! 🚀
