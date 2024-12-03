@@ -1,7 +1,7 @@
 ---
 layout: page
 permalink: /cv/
-title: Curriculum Vitae
+title: cv
 nav: true
 nav_order: 5
 cv_pdf: CV_Haotian Zhao.pdf
