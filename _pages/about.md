@@ -30,14 +30,8 @@ selected_projects: true
 I am currently pursuing my Master's degree in the School of Journalism and Information Communication at Huazhong University of Science and Technology (HUST), under the supervision of Professor Mingxin Zhang. **I am seeking PhD opportunities for Fall 2025**, with research interests lying at the intersection of Political Communication, Computational Methods, and Artificial Intelligence.
 
 
-{% if page.selected_projects %}
-<div class="projects grid">
-  {% assign projects = site.projects | where: "selected", "true" %}
-  {% for project in projects %}
-    {% include projects_horizontal.html %}
-  {% endfor %}
-</div>
-{% endif %}
+
+
 
 
 <!--🚧 Under construction - like my life, as well as my application materials 😄-->
