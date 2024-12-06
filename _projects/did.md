@@ -1,6 +1,6 @@
 ---
 layout: page
-title: Difference-in-Differences (DiD) in Journalism and Communication
+title: Difference-in-Differences (DiD) in Journalism and Communication Studies
 description: 
 img: 
 importance: 2
