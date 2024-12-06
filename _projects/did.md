@@ -1,9 +1,9 @@
 ---
 layout: page
 title: Difference-in-Differences (DiD) in Journalism and Communication Studies
-description: 
-img: 
-importance: 2
+description: How Difference-in-Differences (DiD) analysis is applied in recent journalism and communication research
+img: assets/img/project/did_1.png
+importance: 4
 category: work
 related_publications: false
 ---
@@ -47,7 +47,7 @@ First, let me explain the fundamental logic of DiD and why it's particularly sui
 
 
 <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-8 col-lg-6 mt-3 mt-md-0">
+    <div class="col-sm-12 col-md-11 col-lg-10">
         <figure class="figure">
             {% include figure.liquid loading="eager" path="assets/img/project/did/did_1.png" title="Parallel-Trend Assumption" class="img-fluid rounded z-depth-1" %}
             <figcaption class="figure-caption text-center">Parallel-Trend Assumption</figcaption>
@@ -56,16 +56,6 @@ First, let me explain the fundamental logic of DiD and why it's particularly sui
 </div>
 
 
-<style>
-    .figure {
-        max-width: 100%;
-        height: auto;
-    }
-    .figure img {
-        max-width: 100%;
-        height: auto;
-    }
-</style>
 Source: [Keisha (2022)](https://medium.com/bukalapak-data/difference-in-differences-8c925e691fff)
 
 
@@ -132,7 +122,7 @@ The core idea of DiD is simple: it leverages two dimensions of variation—time 
 DiD assumes that in the absence of the treatment, the difference in outcomes between the treatment and control groups would have remained constant over time. This is called the **parallel trends assumption.**
 
 <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-8 col-lg-6 mt-3 mt-md-0">
+    <div class="col-sm-12 col-md-11 col-lg-10">
         <figure class="figure">
             {% include figure.liquid loading="eager" path="assets/img/project/did/did_2.png" title="Parallel-Trend Assumption" class="img-fluid rounded z-depth-1" %}
             <figcaption class="figure-caption text-center">A Graph Where the Prior Trends Test Looks Good for DID, and a Graph Where It Doesn’t</figcaption>
@@ -215,11 +205,15 @@ Regression Analysis:
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
-        {% include figure.liquid loading="eager" path="assets/img/project/did/did_e1.png" title=" " class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
+        {% include figure.liquid loading="eager" path="assets/img/project/did/did_e1.png" title="Proportion of Political Front-Page Stories and Editorials Across Time" class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
     </div>
 </div>
 
-Confirming the patterns evident in Figure 2, the first column of Table 1 reveals that the relative percentage of political editorials did not significantly change following Murdoch’s purchase of the WSJ – likely because both papers were already publishing such a high proportion of political editorials.
+
+This figure plots the proportion of political stories and editorials appearing in the  weekday papers of the WSJ and NYT across time – the top row graphs the trends for frontpage political stories by week and month and the bottom row depicts the trends for signed  editorials.
+
+The patterns evident in the figure reveal that the relative percentage of political editorials did not significantly change following Murdoch’s purchase of the WSJ – likely because both papers were already publishing such a high proportion of political editorials.
+
 
 
 ## The Relationship Between the Decline of Local Newspapers and Changes in Federal Public Corruption Prosecutions (PPC)

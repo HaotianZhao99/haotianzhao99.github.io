@@ -3,7 +3,7 @@ layout: page
 title: Visulization of Multilevel Modeling
 description: A visual guide to multilevel modeling, showing how MLM handles nested data structures in cross-national research.
 img: assets/img/project/mlm/mlm2.gif
-importance: 2
+importance: 1
 category: work
 related_publications: false
 ---

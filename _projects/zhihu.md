@@ -3,7 +3,7 @@ layout: page
 title: Analyzing Content Controversy in Online Communities Using Word Embedding
 description: An experimental exploration of measuring controversy on Zhihu using word embeddings, revealing unexpected patterns in how controversial content drives user engagement.
 img: assets/img/project/zhihu.png
-importance: 2
+importance: 3
 category: work
 related_publications: false
 ---

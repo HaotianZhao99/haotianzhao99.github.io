@@ -3,7 +3,7 @@ layout: page
 title: Proportional Symbol Charts in ggplot2
 description: Using R's ggplot2, we create a Proportional Symbol Chart to illustrate ICH policy patterns across Chinese provinces over time, offering detailed control for enhanced data representation.
 img: assets/img/project/plot.png
-importance: 2
+importance: 6
 category: work
 related_publications: false
 ---
