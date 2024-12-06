@@ -19,24 +19,56 @@ related_publications: false
 From a comparative perspective, the Chinese approach to policymaking appears rather unorthodox: plans of action are frequently initiated as experiments-without appropriate legislation and regulation put in place beforehand-and are subsequently further developed during their implementation, adaptation, revision, and re-implementation. Consequently, policy making is in a constant state of flux, approved plans of action are subject to change, and corridors for action by the state can be modified. Thus, 
 -->
 
-> The pursuit of extensive, continuous, and loosely institutionalized experimentation can be understood as a crucial policy mechanism in China's economic rise. 
-> China's policy process is much more unpredictable than the legislative processes we encounter in constitutional democracies.
->
-> <div style="text-align: right">-- Sebastian Heilmann</div>
+<blockquote>
+    <p>The pursuit of extensive, continuous, and loosely institutionalized experimentation can be understood as a crucial policy mechanism in China's economic rise.</p>
+    <p>China's policy process is much more unpredictable than the legislative processes we encounter in constitutional democracies.</p>
+    <div style="text-align: right">-- Sebastian Heilmann</div>
+</blockquote>
 
-China stands as a <span style="color: red">**"Red Swan"**</span> challenge to the social sciences. This term describes China's unexpected development trajectory that defies conventional wisdom and traditional models of political transformation. While "Black Swan" events are typically used to describe unpredictable outcomes, China's case is termed a "Red Swan" due to the continued dominance of revolutionary red in the People's Republic of China's (PRC) flag and political symbolism.
+
+
+China stands as a <span style="color: red; font-weight: bold;">"Red Swan"</span> challenge to the social sciences. This term describes China's unexpected development trajectory that defies conventional wisdom and traditional models of political transformation. While "Black Swan" events are typically used to describe unpredictable outcomes, China's case is termed a "Red Swan" due to the continued dominance of revolutionary red in the People's Republic of China's (PRC) flag and political symbolism.
 
 The "red swan" of China's reform and economic progress, in the context of stagnation or collapse of other socialist regimes, may be attributed to the breadth, depth, and duration of its policy experiments. A recent paper by Shaoda Wang from the University of Chicago and David Yang from Harvard University has documented and analyzed over 650 policy experiments in China since 1980.
 
 The study reveals a remarkable system: since the 1980s, the Chinese government has been systematically trying out policies – from carbon emission trading to tax reforms – in selected localities before deciding whether to implement them nationally. Through comprehensive analysis of 652 policy experiments initiated by 92 central ministries over four decades, Wang and Yang uncover fascinating patterns in how these experiments are conducted and evaluated.
 
-The study documents three facts about China's policy experimentation. First, policy experimentation sites are positively selected for characteristics such as local socioeconomic conditions. Second, the experimental situation during policy experimentation is unrepresentative. When participating in policy experiments, local politicians allocated significantly more resources to ensure the experiments' success. Third, the central government showed limited sophistication in interpreting experimentation outcomes. They often failed to fully account for both the positive selection of sites and the strategic behavior of local officials. 
+The study documents three facts about China's policy experimentation. 
+- First, policy experimentation sites are positively selected for characteristics such as local socioeconomic conditions. 
+- Second, the experimental situation during policy experimentation is unrepresentative. When participating in policy experiments, local politicians allocated significantly more resources to ensure the experiments' success. 
+- Third, the central government showed limited sophistication in interpreting experimentation outcomes. They often failed to fully account for both the positive selection of sites and the strategic behavior of local officials. 
 
-The key insight from this research for me was their use of the difference-in-differences (DID) methodology. The DID approach allowed the researchers to establish robust causal links between China's policy experiments and their observed outcomes.
+What stood out to me in this research was its use of the Difference-in-Differences (DiD) methodology.The DiD approach allowed the researchers to establish robust causal links between China's policy experiments and their observed outcomes.
 
 First, let me explain the fundamental logic of DiD and why it's particularly suitable for this research. DiD is designed to estimate causal effects by comparing changes over time between a treatment group and a control group. The key assumption is that without treatment, both groups would have followed parallel trends. The "difference in differences" comes from subtracting two differences:
 1. The difference in outcomes before and after treatment in the treatment group
 2. The difference in outcomes before and after treatment in the control group
+
+
+
+<div class="row justify-content-center">
+    <div class="col-sm-12 col-md-8 col-lg-6 mt-3 mt-md-0">
+        <figure class="figure">
+            {% include figure.liquid loading="eager" path="assets/img/project/did/did_1.png" title="Parallel-Trend Assumption" class="img-fluid rounded z-depth-1" %}
+            <figcaption class="figure-caption text-center">Parallel-Trend Assumption</figcaption>
+        </figure>
+    </div>
+</div>
+
+
+<style>
+    .figure {
+        max-width: 100%;
+        height: auto;
+    }
+    .figure img {
+        max-width: 100%;
+        height: auto;
+    }
+</style>
+Source: [Keisha (2022)](https://medium.com/bukalapak-data/difference-in-differences-8c925e691fff)
+
+
 
 In Wang and Yang's study, they apply this methodology in several sophisticated ways:
 
@@ -45,6 +77,10 @@ Basic DiD Implementation:
 - Control group: Non-selected localities
 - Treatment timing: The start of policy experiments
 - Outcome variables: Local economic indicators (primarily GDP growth and fiscal revenue)
+
+
+
+
 <!--
 They estimate the following equation:
 y_it = α + β(Experiment_i × Post_t) + γ_i + δ_t + ε_it
@@ -91,31 +127,12 @@ The core idea of DiD is simple: it leverages two dimensions of variation—time 
 - Pre-treatment period: The time before the intervention occurs.
 - Post-treatment period: The time after the intervention is implemented.
 
-<div class="row justify-content-center">
-    <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
-        <figure class="figure">
-            {% include figure.liquid loading="eager" path="assets/img/project/did/did_1.png" title="Parallel-Trend Assumption" class="img-fluid rounded z-depth-1" %}
-            <figcaption class="figure-caption text-center">Parallel-Trend Assumption</figcaption>
-        </figure>
-    </div>
-</div>
 
-<style>
-    .figure {
-        max-width: 100%;
-        height: auto;
-    }
-    .figure img {
-        max-width: 100%;
-        height: auto;
-    }
-</style>
-Source: [Keisha (2022)](https://medium.com/bukalapak-data/difference-in-differences-8c925e691fff)
 
 DiD assumes that in the absence of the treatment, the difference in outcomes between the treatment and control groups would have remained constant over time. This is called the **parallel trends assumption.**
 
 <div class="row justify-content-center">
-    <div class="col-md-6 col-lg-4 mt-3 mt-md-0">
+    <div class="col-sm-12 col-md-8 col-lg-6 mt-3 mt-md-0">
         <figure class="figure">
             {% include figure.liquid loading="eager" path="assets/img/project/did/did_2.png" title="Parallel-Trend Assumption" class="img-fluid rounded z-depth-1" %}
             <figcaption class="figure-caption text-center">A Graph Where the Prior Trends Test Looks Good for DID, and a Graph Where It Doesn’t</figcaption>
@@ -129,24 +146,28 @@ Source: [Huntington-Klein](https://theeffectbook.net/ch-DifferenceinDifference.h
 ### Mathematical Representation
 
 Let’s denote:
-- \( Y_{it} \): Outcome variable for group \( i \) at time \( t \).
-- \( D_i \): Indicator for whether a group is in the treatment group (\( D_i = 1 \)) or control group (\( D_i = 0 \)).
-- \( T_t \): Indicator for whether the observation is in the post-treatment period (\( T_t = 1 \)) or pre-treatment period (\( T_t = 0 \)).
+- $$ Y_{it} $$: Outcome variable for group $$ i $$ at time $$ t $$.
+- $$ D_i $$: Indicator for whether a group is in the treatment group ($$ D_i = 1 $$) or control group ($$ D_i = 0 $$).
+- $$ T_t $$: Indicator for whether the observation is in the post-treatment period ($$ T_t = 1 $$) or pre-treatment period ($$ T_t = 0 $$).
+
+
 
 The basic DiD regression model can be written as:
 
-\[
+$$
 Y_{it} = \alpha + \beta D_i + \gamma T_t + \delta (D_i \times T_t) + \epsilon_{it}
-\]
+$$
 
 Where:
-- \( \alpha \): Baseline outcome for the control group in the pre-treatment period.
-- \( \beta \): Baseline difference between the treatment and control groups.
-- \( \gamma \): Common time trend affecting both groups.
-- \( \delta \): **DiD estimate**, capturing the treatment effect.
-- \( \epsilon_{it} \): Error term.
+- $$ \alpha $$: Baseline outcome for the control group in the pre-treatment period.
+- $$ \beta $$: Baseline difference between the treatment and control groups.
+- $$ \gamma $$: Common time trend affecting both groups.
+- $$ \delta $$: **DiD estimate**, capturing the treatment effect.
+- $$ \epsilon_{it} $$: Error term.
 
-The interaction term \( D_i \times T_t \) isolates the causal effect of the treatment by comparing the change in outcomes over time between the treatment and control groups.
+
+The interaction term $$D_i \times T_t$$ isolates the causal effect of the treatment by comparing the change in outcomes over time between the treatment and control groups.
+
 
 ### Key Assumptions
 1. **Parallel Trends Assumption**: In the absence of treatment, the treated and control groups would follow the same trend over time.
