@@ -6,6 +6,7 @@ img: assets/img/project/did_1.png
 importance: 4
 category: work
 related_publications: false
+selected: true
 ---
 
 <!--

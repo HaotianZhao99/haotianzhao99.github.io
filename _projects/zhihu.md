@@ -6,6 +6,7 @@ img: assets/img/project/zhihu.png
 importance: 3
 category: work
 related_publications: false
+selected: true
 ---
 How can we objectively identify and quantify controversy in online communities where controversial content often sparks heated discussions? This article introduces a word embedding-based approach to analyze the degree of controversy in social platform content and its relationship with user interactions.
 
