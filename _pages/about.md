@@ -23,30 +23,25 @@ profile:
 news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
+# 添加 selected_projects 配置
+selected_projects: true 
 ---
-
-{% if site.data.projects %}
-<h2>Selected Projects</h2>
-<div class="projects grid">
-  {% assign selected_projects = site.projects | where: "selected", "true" %}
-  {% for project in selected_projects %}
-  <div class="grid-item">
-    {% if project.redirect %}
-    <a href="{{ project.redirect }}">
-    {% else %}
-    <a href="{{ project.url | relative_url }}">
-    {% endif %}
-      <h2>{{ project.title }}</h2>
-      {% if project.description %}
-      <p>{{ project.description }}</p>
-      {% endif %}
-    </a>
-  </div>
-  {% endfor %}
-</div>
-{% endif %}
 
 I am currently pursuing my Master's degree in the School of Journalism and Information Communication at Huazhong University of Science and Technology (HUST), under the supervision of Professor Mingxin Zhang. **I am seeking PhD opportunities for Fall 2025**, with research interests lying at the intersection of Political Communication, Computational Methods, and Artificial Intelligence.
 
+<!-- 在个人简介后添加项目展示部分 -->
+{% if page.selected_projects -%}
+<div class="projects">
+  <h2>Selected Projects</h2>
+  <div class="grid">
+    {%- assign sorted_projects = site.projects | sort: "importance" -%}
+    {%- for project in sorted_projects -%}
+      {% if project.selected == true %}
+        {% include projects.html %}
+      {% endif %}
+    {%- endfor %}
+  </div>
+</div>
+{%- endif %}
 
 <!--🚧 Under construction - like my life, as well as my application materials 😄-->
