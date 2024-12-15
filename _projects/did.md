@@ -197,6 +197,7 @@ The authors leveraged a Difference-in-Differences design to compare the coverage
 Comparison Groups
 - The New York Times served as the primary comparison group. Both newspapers are headquartered in New York City, targeting similar audiences, making them ideal for DiD analysis.
 - Additional comparisons with USA Today and The Washington Post provided robustness.
+
 Design 
 - Pre- and Post-Intervention Periods: Coverage before and after Murdoch's acquisition was analyzed, with the "intervention" defined as the ownership transfer in August 2007. 
 - Outcome Variables: The percentage of political stories on the front page (and above the fold) was compared across newspapers and time periods.
