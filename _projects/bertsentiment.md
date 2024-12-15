@@ -6,6 +6,6 @@ img:
 importance: 7
 category: work
 related_publications: false
-selected: true
+selected: false
 ---
 🚧 Under construction - like my life, as well as my application materials 
