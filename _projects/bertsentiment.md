@@ -473,13 +473,6 @@ test_sentiment(test_texts, "BarryzZ/sentiment-weibo-100k-fine-tuned-bert-test")
     
 
 
-```python
-print(1+1)
-```
-
-    2
-    
-
 There's clearly an issue with our model's predictions. The model is:
 1. Classifying everything as positive (positive sentiment)
 2. Doing so with extremely high confidence (nearly 100%)
