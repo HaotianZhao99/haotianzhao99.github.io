@@ -372,7 +372,7 @@ print("\nEvaluation Results:", eval_results)
     <div class="col-sm-10 col-md-8 col-lg-9">
         <figure class="figure">
             {% include figure.liquid loading="eager" path="assets/img/project/sentiment/sentiment1.png" title="" class="img-fluid rounded z-depth-1" %}
-            <figcaption class="figure-caption text-center"> n</figcaption>
+            <figcaption class="figure-caption text-center"> </figcaption>
         </figure>
     </div>
 </div>
@@ -584,7 +584,7 @@ for metric, value in eval_results.items():
     <div class="col-sm-12 col-md-11 col-lg-10">
         <figure class="figure">
             {% include figure.liquid loading="eager" path="assets/img/project/sentiment/sentiment2.png" title="" class="img-fluid rounded z-depth-1" %}
-            <figcaption class="figure-caption text-center"> n</figcaption>
+            <figcaption class="figure-caption text-center"> </figcaption>
         </figure>
     </div>
 </div>
