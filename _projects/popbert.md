@@ -9,7 +9,7 @@ related_publications: false
 selected: true
 ---
 
-
+<!-- 本地 Jupyter Notebook 显示 -->
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/02-create_popbert_model.ipynb' | relative_url %}
 {% capture notebook_exists %}{% file_exists assets/jupyter/notebookblog.ipynb %}{% endcapture %}
@@ -20,6 +20,16 @@ selected: true
 {% endif %}
 {:/nomarkdown}
 
+<!-- Colab 版本嵌入 -->
+<div class="mt-4">
+  <iframe
+    src="https://colab.research.google.com/drive/13Dud9TfNVx-AmA7QrjXi5_ZPEclv5EoP/embed"
+    width="100%"
+    height="800px"
+    frameborder="0"
+    allowfullscreen>
+  </iframe>
+</div>
 
 ------------
 
