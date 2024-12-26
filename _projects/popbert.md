@@ -9,12 +9,11 @@ related_publications: false
 selected: true
 ---
 
-{::nomarkdown}
-<!-- 嵌入 GitHub Gist 并控制大小 -->
-<div style="width: 100%; height: 1200px; overflow: auto;">
-    <script src="https://gist.github.com/HaotianZhao99/77ff120266c5a221c0f18701c6c5d45e.js"></script>
-</div>
-{:/nomarkdown}
+
+<!-- 通过 GitHub Gist 嵌入 notebook -->
+<p>
+<script src="https://gist.github.com/HaotianZhao99/77ff120266c5a221c0f18701c6c5d45e.js"></script>
+</p>
 
 ---------
 
