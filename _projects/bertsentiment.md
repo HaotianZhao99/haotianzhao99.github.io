@@ -2,7 +2,7 @@
 layout: page
 title: Sentiment Classification Using Fine-tuned BERT
 description: 
-img: 
+img: assets/img/project/bert-sentiment.png
 importance: 7
 category: work
 related_publications: false
