@@ -1,12 +1,13 @@
 ---
 layout: page
-title: Heatmap Visualization of Intangible Cultural Heritage 
+title: Heatmap Visualization of Intangible Cultural Heritage
 description: This project uses Python and Baidu Map API to create a spatial heatmap visualization of China's Intangible Cultural Heritage (ICH), revealing its distribution across the country at the county level.
 img: assets/img/project/heat.png
 importance: 5
 category: work
 related_publications: false
 ---
+
 China's Intangible Cultural Heritage (ICH) refers to cultural heritage that exists in non-material forms and is transmitted through intangible means. This heritage encompasses a wide range of cultural practices, including oral traditions, performing arts, social customs, festivals, and traditional craftsmanship skills. Conceptually, ICH can be viewed as a form of intangible cultural legacy, encompassing traditional knowledge such as Beijing Opera, Kunqu Opera, paper-cutting, embroidery, Traditional Chinese Medicine, and herbal medicine.
 
 The United Nations Educational, Scientific and Cultural Organization (UNESCO) has inscribed 43 elements from China on its [Lists of the Intangible Cultural Heritage of Humanity](https://ich.unesco.org/en/lists). Since 2006, the Chinese government has announced five batches of nationally representative ICH projects, currently totaling 3,000 entries. The national-level recognition and documentation of ICH are crucial for its protection, transmission, and dissemination.
@@ -24,6 +25,7 @@ In a data journalism research project aimed at exploring the relationship betwee
 -->
 
 # Data crawling
+
 The data source is the list of nationally representative ICH projects (including 3,610 sub-items) recorded on the China Intangible Cultural Heritage Network. Through web scraping, information such as the name, category, time, nominating region or unit, and the organization responsible for protecting the cultural heritage can be obtained for each item. To create the distribution heat map, we retained the nominating region. An example of county-level precision data is as follows:
 
 <!--
@@ -41,9 +43,10 @@ The data source is the list of nationally representative ICH projects (including
 <tr><td>Yunnan Province Simao City</td></tr> 
 <tr><td>...</td></tr> </table>
 
-
 # Obtaining Geographic Information
+
 In Python, it is possible to draw distribution maps with provincial-level accuracy by using the names of provinces. However, to achieve county-level accuracy, we need to obtain the latitude and longitude data for each county using the API provided by Baidu Maps. After obtaining the latitude and longitude data, we can then proceed to draw a heat map.
+
 <!--# 获取地理信息
 省级精度的数据可以在python中通过省份名称直接绘制分布图。但我们需要县级精度数据，这就需要使用百度地图的API来获取每一个县的经纬度数据，再通过经纬度数据绘制热力图。-->
 
@@ -51,34 +54,33 @@ In Python, it is possible to draw distribution maps with provincial-level accura
 {% assign jupyter_path = 'assets/jupyter/heatmap1.ipynb' | relative_url %}
 {% capture notebook_exists %}{% file_exists assets/jupyter/heatmap1.ipynb %}{% endcapture %}
 {% if notebook_exists == 'true' %}
-  {% jupyter_notebook jupyter_path %}
+{% jupyter_notebook jupyter_path %}
 {% else %}
+
   <p>Sorry, the notebook you are looking for does not exist.</p>
 {% endif %}
 {:/nomarkdown}
 
 The final inclusion of latitude and longitude data should be as follows:
 
-| County Name                 | Longitude       | Latitude       |
-|---------------------------|-----------------|----------------|
-| Guizhou Province Taijiang County   | 108.3285516    | 26.67237254   |
-| Guizhou Province Huangping County  | 107.9235478    | 26.91128864   |
-| Hunan Province Huayuan County     | 109.4885618    | 28.57790993   |
-| Guizhou Province Guiyang Qingzhen City | 106.4775226   | 26.5619879    |
-| Guangxi Zhuang Autonomous Region Tianyang County | 108.3345212  | 22.821269    |
-| Yunnan Province Lianghe County     | 98.30313363    | 24.81078446   |
-| Yunnan Province Simao City         | 100.9835551    | 22.79249798   |
-| ...                           | ...             | ...            |
+| County Name                                      | Longitude   | Latitude    |
+| ------------------------------------------------ | ----------- | ----------- |
+| Guizhou Province Taijiang County                 | 108.3285516 | 26.67237254 |
+| Guizhou Province Huangping County                | 107.9235478 | 26.91128864 |
+| Hunan Province Huayuan County                    | 109.4885618 | 28.57790993 |
+| Guizhou Province Guiyang Qingzhen City           | 106.4775226 | 26.5619879  |
+| Guangxi Zhuang Autonomous Region Tianyang County | 108.3345212 | 22.821269   |
+| Yunnan Province Lianghe County                   | 98.30313363 | 24.81078446 |
+| Yunnan Province Simao City                       | 100.9835551 | 22.79249798 |
+| ...                                              | ...         | ...         |
 
-
->The method of obtaining latitude and longitude has been adapted according to [StimuMing's approach](https://www.cnblogs.com/fole-del/p/14810401.html).
+> The method of obtaining latitude and longitude has been adapted according to [StimuMing's approach](https://www.cnblogs.com/fole-del/p/14810401.html).
 
 #### Alternative Methods
-Certainly, if high precision is not a requisite or if the quantity of data points is amenable to manual or visual inspection, one might consider employing GPT to generate latitude and longitude coordinates. However, it is advisable to construct a prompt that encourages GPT to strive for maximum accuracy or to reference publicly available data sources. 
+
+Certainly, if high precision is not a requisite or if the quantity of data points is amenable to manual or visual inspection, one might consider employing GPT to generate latitude and longitude coordinates. However, it is advisable to construct a prompt that encourages GPT to strive for maximum accuracy or to reference publicly available data sources.
 
 Nevertheless, it is important to note that GPT may produce erroneous results with an air of authority when confronted with such geospatial queries.
-
-
 
 <!--
 #### 替代性方法
@@ -86,18 +88,17 @@ Nevertheless, it is important to note that GPT may produce erroneous results wit
 获取经纬度的方式根据StimuMing的方法改编。
 -->
 
-
 # Creating a Heatmap
+
 Creating a heatmap can be effectively accomplished using the [pyecharts](https://github.com/pyecharts/pyecharts) library. Pyecharts is a powerful visualization tool that leverages the capabilities of the ECharts framework, which is developed by Baidu. This library allows for a wide array of data visualizations, including the creation of heatmaps, which are particularly useful for representing the intensity of data points across a two-dimensional plane.
-
-
 
 {::nomarkdown}
 {% assign jupyter_path = 'assets/jupyter/heatmap2.ipynb' | relative_url %}
 {% capture notebook_exists %}{% file_exists assets/jupyter/heatmap2.ipynb %}{% endcapture %}
 {% if notebook_exists == 'true' %}
-  {% jupyter_notebook jupyter_path %}
+{% jupyter_notebook jupyter_path %}
 {% else %}
+
   <p>Sorry, the notebook you are looking for does not exist.</p>
 {% endif %}
 {:/nomarkdown}
@@ -115,4 +116,3 @@ The observed distribution pattern raises several pertinent questions for investi
 5. How might this distribution pattern evolve over time, and what are the potential implications for cultural sustainability and national identity?
 
 This spatial analysis provides a foundation for more nuanced investigations into the complex relationships between geography, economics, ethnicity, and cultural heritage in the Chinese context.
-

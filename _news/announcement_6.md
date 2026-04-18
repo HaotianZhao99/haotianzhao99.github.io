@@ -5,5 +5,4 @@ inline: true
 related_posts: false
 ---
 
- Honored to receive the Top Student Paper Award from ICA Political Communication Division! 🏆 Thankful for this honor and eager to build on this momentum 🚀
-
+Honored to receive the Top Student Paper Award from ICA Political Communication Division! 🏆 Thankful for this honor and eager to build on this momentum 🚀

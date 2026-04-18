@@ -2,7 +2,7 @@
 layout: page
 permalink: /academicpapers/
 title: academic papers
-description: 
+description:
 nav: true
 nav_order: 2
 ---

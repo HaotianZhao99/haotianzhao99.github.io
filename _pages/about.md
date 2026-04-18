@@ -2,7 +2,7 @@
 layout: about
 title: home
 permalink: /
-subtitle:  
+subtitle:
 
 profile:
   align: right
@@ -37,14 +37,9 @@ news: true # includes a list of news items
 selected_papers: true # includes a list of papers marked as "selected={true}"
 social: false # includes social icons at the bottom of the page
 # 添加 selected_projects 配置
-selected_projects: true 
+selected_projects: true
 ---
 
 I am currently pursuing my Ph.D. in the School of Journalism and Mass Communication at the University of Wisconsin-Madison, with research interests lying at the intersection of Political Communication, Computational Methods, and Artificial Intelligence. I am also actively exploring and refining my research interests as I progress through my doctoral studies.
-
-
-
-
-
 
 <!--🚧 Under construction - like my life, as well as my application materials 😄-->

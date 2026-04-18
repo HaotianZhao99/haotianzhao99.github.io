@@ -41,70 +41,68 @@ test_sentiment(test_texts, "BarryzZ/sentiment-weibo-100k-fine-tuned-bert-test")
 ```
 
     Device set to use cuda:0
-    
 
-    
+
+
     Text: 这家店的菜真香，下次还来！
     Sentiment: positive
     Confidence: 1.0000
-    
+
     Text: 质量有问题，不推荐购买。
     Sentiment: positive
     Confidence: 1.0000
-    
+
     Text: 快递很快，包装完整。
     Sentiment: positive
     Confidence: 1.0000
-    
+
     Text: 商家态度很不好，生气。
     Sentiment: positive
     Confidence: 1.0000
-    
+
     Text: 非常满意，超出预期。
     Sentiment: positive
     Confidence: 1.0000
-    
+
     Text: 难吃到极点，太糟糕了。
     Sentiment: positive
     Confidence: 1.0000
-    
+
     Text: 穿着很舒服，尺码合适。
     Sentiment: positive
     Confidence: 1.0000
-    
+
     Text: 卖家服务特别好！
     Sentiment: positive
     Confidence: 1.0000
-    
+
     Text: 不值这个价钱，后悔买了。
     Sentiment: positive
     Confidence: 1.0000
-    
+
     Text: 产品完全是垃圾，气死了。
     Sentiment: positive
     Confidence: 0.9997
-    
-
 
 ```python
 print(1+1)
 ```
 
     2
-    
 
 There's clearly an issue with our model's predictions. The model is:
+
 1. Classifying everything as positive (positive sentiment)
 2. Doing so with extremely high confidence (nearly 100%)
 3. Failing to identify obvious negative sentiments like "难吃到极点" and "产品完全是垃圾"
 
 These issues are likely due to optimization problems rather than data imbalance. Our adjustments focus on:
+
 1. Better monitoring (more frequent evaluation, detailed metrics)
 2. Improved efficiency (larger batches, mixed precision)
 3. Extended training (more epochs, early stopping)
 
 Let's test the model with these optimized parameters.
-
 
 ```python
 # Initialize model with same configuration
@@ -198,9 +196,7 @@ for metric, value in eval_results.items():
         print(f"{metric}: {value}")
 ```
 
-
 The model achieved excellent metrics after just one epoch.
-
 
 ```python
 # Test with example texts
@@ -222,54 +218,52 @@ test_sentiment(test_texts, "BarryzZ/sentiment-weibo-100k-fine-tuned-bert")
 ```
 
     Device set to use cuda:0
-    
 
-    
+
+
     Text: 这家店的菜真香，下次还来！
     Sentiment: positive
     Confidence: 0.9923
-    
+
     Text: 质量有问题，不推荐。
     Sentiment: negative
     Confidence: 0.8533
-    
+
     Text: 快递很快，包装完整。
     Sentiment: positive
     Confidence: 0.9878
-    
+
     Text: 商家态度不好，生气。
     Sentiment: negative
     Confidence: 0.9732
-    
+
     Text: 非常满意，超出预期。
     Sentiment: positive
     Confidence: 0.9791
-    
+
     Text: 难吃到极点，太糟糕了。
     Sentiment: negative
     Confidence: 0.8653
-    
+
     Text: 穿着很舒服，尺码合适。
     Sentiment: positive
     Confidence: 0.9907
-    
+
     Text: 卖家服务特别好！
     Sentiment: positive
     Confidence: 0.9922
-    
+
     Text: 不值这个价钱，后悔买了。
     Sentiment: negative
     Confidence: 0.8147
-    
+
     Text: 产品完全是垃圾，气死了。
     Sentiment: negative
     Confidence: 0.9863
-    
 
 After parameter optimization, our model shows significant improvements.
 
- Let's test it with some new scenarios to verify its robustness.
-
+Let's test it with some new scenarios to verify its robustness.
 
 ```python
 test_texts = [
@@ -303,72 +297,71 @@ test_sentiment(test_texts, "BarryzZ/sentiment-weibo-100k-fine-tuned-bert")
 
     Device set to use cuda:0
     You seem to be using the pipelines sequentially on GPU. In order to maximize efficiency please use a dataset
-    
 
-    
+
+
     Text: 我考上研究生了！
     Sentiment: positive
     Confidence: 0.8713
-    
+
     Text: 今天他向我求婚了！
     Sentiment: positive
     Confidence: 0.6087
-    
+
     Text: 终于买到梦想的房子
     Sentiment: positive
     Confidence: 0.7931
-    
+
     Text: 中了五百万大奖！
     Sentiment: positive
     Confidence: 0.6070
-    
+
     Text: 被裁员了，好绝望
     Sentiment: negative
     Confidence: 0.9973
-    
+
     Text: 信任的人背叛我
     Sentiment: negative
     Confidence: 0.9572
-    
+
     Text: 重要的文件全丢了
     Sentiment: negative
     Confidence: 0.9941
-    
+
     Text: 又被扣工资了，气死
     Sentiment: negative
     Confidence: 0.9963
-    
+
     Text: 偷我的车，混蛋！
     Sentiment: negative
     Confidence: 0.9664
-    
+
     Text: 骗子公司，我要报警
     Sentiment: negative
     Confidence: 0.9750
-    
+
     Text: 半夜装修，烦死了
     Sentiment: negative
     Confidence: 0.9906
-    
+
     Text: 商家太坑人了！
     Sentiment: negative
     Confidence: 0.8367
-    
+
     Text: 宝宝会走路了！
     Sentiment: positive
     Confidence: 0.9125
-    
+
     Text: 升职加薪啦！
     Sentiment: positive
     Confidence: 0.9727
-    
+
     Text: 论文发表成功！
     Sentiment: positive
     Confidence: 0.9998
-    
+
     Text: 收到offer了！
     Sentiment: positive
     Confidence: 0.7036
-    
 
-The optimized model shows excellent performance in Chinese sentiment analysis. It now correctly identifies both positive and negative sentiments with appropriate confidence levels, while maintaining more moderate confidence for nuanced cases. 
+The optimized model shows excellent performance in Chinese sentiment analysis. It now correctly identifies both positive and negative sentiments with appropriate confidence levels, while maintaining more moderate confidence for nuanced cases.

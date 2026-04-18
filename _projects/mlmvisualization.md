@@ -9,11 +9,12 @@ related_publications: false
 selected: true
 ---
 
-
 # Introduction to Multilevel Modeling
+
 Multilevel modeling (MLM), also known as hierarchical linear modeling or mixed-effects modeling, is a sophisticated statistical approach designed to analyze hierarchically structured or nested data. This method has become increasingly vital in social science research, particularly when dealing with data organized across multiple levels of analysis.
 
 ## Simpson's Paradox and the Need for MLM
+
 One of the most compelling reasons to employ multilevel modeling (MLM) is its ability to address Simpson's paradox, a counterintuitive statistical phenomenon that highlights the complex nature of hierarchical data structures. This paradox occurs when a trend or relationship that appears consistently in several groups of data either disappears or, more strikingly, reverses direction when these groups are combined or analyzed at an aggregate level.
 
 The paradox fundamentally demonstrates how relationships between variables can be profoundly influenced by the level at which data is analyzed. It reveals that what appears true at one level of analysis may be false at another, challenging our intuitive understanding of causality and correlation. This makes it particularly problematic for researchers who need to draw accurate conclusions from nested or hierarchically structured data.
@@ -26,8 +27,7 @@ The paradox fundamentally demonstrates how relationships between variables can b
 
 Source: [Grigg (2018)](https://towardsdatascience.com/simpsons-paradox-and-interpreting-data-6a0443516765)
 
-
-Multilevel modeling's value becomes particularly clear when we consider real-world scenarios like the famous 1975 University of California, Berkeley graduate admissions study. This case perfectly illustrates how data analyzed at different levels can tell seemingly contradictory stories. When researchers examined the aggregate admission rates, they found what appeared to be significant gender discrimination - male applicants had a notably higher overall admission rate (44%) compared to female applicants (35%). 
+Multilevel modeling's value becomes particularly clear when we consider real-world scenarios like the famous 1975 University of California, Berkeley graduate admissions study. This case perfectly illustrates how data analyzed at different levels can tell seemingly contradictory stories. When researchers examined the aggregate admission rates, they found what appeared to be significant gender discrimination - male applicants had a notably higher overall admission rate (44%) compared to female applicants (35%).
 
 However, when the analysis was conducted at the departmental level, this pattern not only disappeared but actually reversed in many cases, with women showing higher admission rates in most individual departments. This apparent contradiction emerged because the analysis failed to account for a crucial hierarchical structure in the data: departments varied significantly in their competitiveness, and female applicants tended to apply to more competitive departments, particularly in the social sciences, while male applicants were more likely to seek admission to less competitive departments, such as those in the natural sciences. This scenario demonstrates why multilevel modeling is essential - it allows researchers to simultaneously account for both individual-level effects and higher-level contextual factors (in this case, departmental differences), preventing misleading conclusions that might arise from analyzing data at only one level. By incorporating the hierarchical nature of the data directly into the analysis, MLM provides a more accurate and nuanced understanding of complex relationships, helping researchers avoid the pitfalls of Simpson's Paradox and leading to more informed decision-making.
 
@@ -45,96 +45,96 @@ Let's consider a two-level model:
 
 ## Level-1 Model (Individual Level):
 
-$$ Y_{ij} = \beta_{0j} + \beta_{1j}X_{ij} + e_{ij} $$
+$$ Y*{ij} = \beta*{0j} + \beta*{1j}X*{ij} + e\_{ij} $$
 
 Where:
-- $$ Y_{ij} $$ is the outcome for individual $$i$$ in group $$j$$
-- $$ X_{ij} $$ is the predictor variable for individual $$i$$ in group $$j$$
-- $$ \beta_{0j} $$ is the intercept for group $$j$$
-- $$ \beta_{1j} $$ is the slope for group $$j$$
-- $$ e_{ij} $$ is the individual-level residual, typically assumed $$ e_{ij} \sim N(0, \sigma^2) $$
+
+- $$ Y\_{ij} $$ is the outcome for individual $$i$$ in group $$j$$
+- $$ X\_{ij} $$ is the predictor variable for individual $$i$$ in group $$j$$
+- $$ \beta\_{0j} $$ is the intercept for group $$j$$
+- $$ \beta\_{1j} $$ is the slope for group $$j$$
+- $$ e*{ij} $$ is the individual-level residual, typically assumed $$ e*{ij} \sim N(0, \sigma^2) $$
 
 ## Level-2 Model (Group Level):
 
 For random intercepts:
-$$ \beta_{0j} = \gamma_{00} + \gamma_{01}W_j + u_{0j} $$
+$$ \beta*{0j} = \gamma*{00} + \gamma*{01}W_j + u*{0j} $$
 
 For random slopes:
-$$ \beta_{1j} = \gamma_{10} + \gamma_{11}W_j + u_{1j} $$
+$$ \beta*{1j} = \gamma*{10} + \gamma*{11}W_j + u*{1j} $$
 
 Where:
-- $$ W_j $$ is a group-level predictor
-- $$ \gamma_{00} $$ is the overall intercept
-- $$ \gamma_{10} $$ is the overall slope
-- $$ \gamma_{01} $$ and $$ \gamma_{11} $$ are the effects of group-level predictor on intercepts and slopes
-- $$ u_{0j} $$ and $$ u_{1j} $$ are group-level random effects, typically assumed:
 
-$$ \begin{pmatrix} u_{0j} \\ u_{1j} \end{pmatrix} \sim N\begin{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix}, \begin{pmatrix} \tau_{00} & \tau_{01} \\ \tau_{01} & \tau_{11} \end{pmatrix} \end{pmatrix} $$
+- $$ W_j $$ is a group-level predictor
+- $$ \gamma\_{00} $$ is the overall intercept
+- $$ \gamma\_{10} $$ is the overall slope
+- $$ \gamma*{01} $$ and $$ \gamma*{11} $$ are the effects of group-level predictor on intercepts and slopes
+- $$ u*{0j} $$ and $$ u*{1j} $$ are group-level random effects, typically assumed:
+
+$$ \begin{pmatrix} u*{0j} \\ u*{1j} \end{pmatrix} \sim N\begin{pmatrix} \begin{pmatrix} 0 \\ 0 \end{pmatrix}, \begin{pmatrix} \tau*{00} & \tau*{01} \\ \tau*{01} & \tau*{11} \end{pmatrix} \end{pmatrix} $$
 
 ## Combined Mixed Model:
 
 Substituting the level-2 equations into the level-1 equation yields:
 
-$$ Y_{ij} = [\gamma_{00} + \gamma_{01}W_j + u_{0j}] + [\gamma_{10} + \gamma_{11}W_j + u_{1j}]X_{ij} + e_{ij} $$
+$$ Y*{ij} = [\gamma*{00} + \gamma*{01}W_j + u*{0j}] + [\gamma_{10} + \gamma_{11}W_j + u_{1j}]X*{ij} + e*{ij} $$
 
-$$ Y_{ij} = \gamma_{00} + \gamma_{01}W_j + \gamma_{10}X_{ij} + \gamma_{11}W_jX_{ij} + [u_{0j} + u_{1j}X_{ij} + e_{ij}] $$
+$$ Y*{ij} = \gamma*{00} + \gamma*{01}W_j + \gamma*{10}X*{ij} + \gamma*{11}W*jX*{ij} + [u_{0j} + u_{1j}X_{ij} + e_{ij}] $$
 
 This combined equation shows:
-- Fixed effects: $$ \gamma_{00}, \gamma_{01}, \gamma_{10}, \gamma_{11} $$
-- Random effects: $$ u_{0j}, u_{1j} $$
-- Cross-level interaction: $$ \gamma_{11}W_jX_{ij} $$
+
+- Fixed effects: $$ \gamma*{00}, \gamma*{01}, \gamma*{10}, \gamma*{11} $$
+- Random effects: $$ u*{0j}, u*{1j} $$
+- Cross-level interaction: $$ \gamma*{11}W_jX*{ij} $$
 
 ## Variance Components:
 
-The total variance in $$ Y_{ij} $$ can be decomposed into:
+The total variance in $$ Y\_{ij} $$ can be decomposed into:
 
 Level-1 variance: $$ \sigma^2 $$ (within-group)
 
 Level-2 variances:
-- $$ \tau_{00} $$ (random intercept variance)
-- $$ \tau_{11} $$ (random slope variance)
-- $$ \tau_{01} $$ (covariance between random intercepts and slopes)
 
+- $$ \tau\_{00} $$ (random intercept variance)
+- $$ \tau\_{11} $$ (random slope variance)
+- $$ \tau\_{01} $$ (covariance between random intercepts and slopes)
 
 ## Intraclass Correlation Coefficient (ICC):
+
 The ICC represents the proportion of variance at the group level:
+
 $$
 \text{ICC} = \frac{\tau_{00}}{\tau_{00} + \sigma^2}
 $$
-
-
 
 ## These Equations Help Us Understand:
 
 - **Hierarchical Data Structure**  
    The model captures the nested structure of the data, where individuals (level 1) are grouped within clusters or groups (level 2). It allows us to analyze how both individual-level and group-level factors influence the outcome.
 
-- **Fixed and Random Effects**  
-   - *Fixed effects* (e.g., $$ \gamma_{00}, \gamma_{10}, \gamma_{01}, \gamma_{11} $$) estimate the overall relationships and provide insights into how predictors at both levels affect the outcome on average.  
-   - *Random effects* (e.g., $$ u_{0j}, u_{1j} $$) capture variability across groups, indicating how much the intercepts and slopes differ from group to group.
+- **Fixed and Random Effects**
+
+  - _Fixed effects_ (e.g., $$ \gamma*{00}, \gamma*{10}, \gamma*{01}, \gamma*{11} $$) estimate the overall relationships and provide insights into how predictors at both levels affect the outcome on average.
+  - _Random effects_ (e.g., $$ u*{0j}, u*{1j} $$) capture variability across groups, indicating how much the intercepts and slopes differ from group to group.
 
 - **Cross-Level Interactions**  
-   The term $$ \gamma_{11}W_jX_{ij} $$ shows how group-level predictors ($$ W_j $$) can moderate the effect of individual-level predictors ($$ X_{ij} $$), highlighting potential interaction effects across levels.
+   The term $$ \gamma*{11}W_jX*{ij} $$ shows how group-level predictors ($$ W*j $$) can moderate the effect of individual-level predictors ($$ X*{ij} $$), highlighting potential interaction effects across levels.
 
 - **Partitioning Variance**  
-   The model separates variance into within-group (level-1) variance ($$ \sigma^2 $$) and between-group (level-2) variances ($$ \tau_{00}, \tau_{11} $$). This decomposition helps identify how much of the outcome variation is due to differences within groups versus between groups.
+   The model separates variance into within-group (level-1) variance ($$ \sigma^2 $$) and between-group (level-2) variances ($$ \tau*{00}, \tau*{11} $$). This decomposition helps identify how much of the outcome variation is due to differences within groups versus between groups.
 
 - **Intraclass Correlation Coefficient (ICC)**  
    The ICC quantifies the proportion of variance attributable to group-level differences. A higher ICC suggests that group membership plays a significant role in explaining the outcome, emphasizing the need for multilevel modeling.
 
 - **Correlation Between Intercepts and Slopes**  
-   The covariance term ($$ \tau_{01} $$) indicates whether groups with higher intercepts tend to have steeper or flatter slopes. This can provide insights into how initial levels of the outcome relate to its rate of change across groups.
-
-
-
-
+   The covariance term ($$ \tau\_{01} $$) indicates whether groups with higher intercepts tend to have steeper or flatter slopes. This can provide insights into how initial levels of the outcome relate to its rate of change across groups.
 
 # MLM in Communication Research
+
 The application of MLM has proven particularly valuable for cross-national research in communication studies. For example:
 Cross-National Social Media Studies
 
 Diehl, T., Huber, B., Gil de Zúñiga, H., & Liu, J. (2021). Social Media and Beliefs about Climate Change: A Cross-National Analysis of News Use, Political Ideology, and Trust in Science. International Journal of Public Opinion Research, 33(2), 197–213. https://doi.org/10.1093/ijpor/edz040
-
 
 - Examined the relationship between social media use and climate change beliefs across different countries
 - Used random slopes to visualize how social media's influence varies by national context
@@ -145,36 +145,31 @@ Diehl, T., Huber, B., Gil de Zúñiga, H., & Liu, J. (2021). Social Media and Be
     </div>
 </div>
 
-
-
-
 Chan, M., & Yi, J. (2024). Social Media Use and Political Engagement in Polarized Times. Examining the Contextual Roles of Issue and Affective Polarization in Developed Democracies. Political Communication, 1–20. https://doi.org/10.1080/10584609.2024.2325423
-
 
 - Investigated the relationship between social media use and political engagement across the world
 - Conceptualized national issue polarization and affective polarization as contextual factors
 - Explored cross-level interaction effects
 
-
->The Power of Random Slopes
->One of MLM's most powerful features is its ability to accommodate random coefficients. This means that when conducting cross-national analyses, we can observe how the relationship between variables varies across different national contexts. The effect size and direction of relationships can differ significantly from country to country, providing a more nuanced understanding of social phenomena.
-
+> The Power of Random Slopes
+> One of MLM's most powerful features is its ability to accommodate random coefficients. This means that when conducting cross-national analyses, we can observe how the relationship between variables varies across different national contexts. The effect size and direction of relationships can differ significantly from country to country, providing a more nuanced understanding of social phenomena.
 
 # Visualizing Random Slopes in R: A Case Study with World Values Survey Data
+
 When conducting cross-national research using MLM, visualizing random slopes becomes crucial for understanding and communicating results effectively. Here are several strategies for visualizing random slopes in R, each with its own advantages and limitations.
 
-
 ## Introduction to the Dataset
+
 We'll walk through a practical example of multilevel modeling using real-world data from Wave 7 of the World Values Survey (WVS). The WVS is a treasure trove of global public opinion data, covering everything from political beliefs to social values across numerous countries. While the full dataset is extensive and could support complex research questions, for our demonstration purposes, we'll focus on a straightforward yet interesting relationship: how social media use might influence people's perceptions of science and technology.
 
-We selected just four key variables from this rich dataset. 
+We selected just four key variables from this rich dataset.
+
 - Respondent ID (identifier for each individual)
 - Country Code (identifying the country of each respondent)
 - Social Media Use (frequency of social media usage)
 - Technology Attitude (response to the question "Is the world better off, or worse off, because of science and technology?")
 
 Let's first examine our streamlined dataset:
-
 
 ```r
 # Load required package for initial data exploration
@@ -203,8 +198,8 @@ wvs_data %>%
   ) %>%
   mutate_if(is.numeric, ~round(., 2)) %>%
   arrange(desc(mean_tech)) %>%
-  print(n = 20)  
-# 
+  print(n = 20)
+#
 # # A tibble: 64 × 5
 # country mean_tech sd_tech missing_tech     n
 # <chr>       <dbl>   <dbl>        <dbl> <dbl>
@@ -233,14 +228,14 @@ wvs_data %>%
 
 ```
 
-
 ## Variable Distributions
+
 Before proceeding with multilevel modeling, let's examine how our key variables are distributed across countries:
 
 ```r
 # Create density plots for technology attitudes by country
 library(ggplot2)
-ggplot(wvs_data, aes(tech)) + 
+ggplot(wvs_data, aes(tech)) +
   geom_density(fill = "skyblue", alpha = 0.5) +
   facet_wrap(~country) +
   theme_minimal() +
@@ -251,7 +246,7 @@ ggplot(wvs_data, aes(tech)) +
 
 
 # Create density plots for social media use by country
-ggplot(wvs_data, aes(smu)) + 
+ggplot(wvs_data, aes(smu)) +
   geom_density(fill = "lightgreen", alpha = 0.5) +
   facet_wrap(~country) +
   theme_minimal() +
@@ -275,21 +270,22 @@ ggplot(wvs_data, aes(smu)) +
     </div>
 </div>
 
-
 ## Building the Multilevel Model
+
 ### The Empty Model
-We start with an empty model (also called null model or intercept-only model) to understand how much variation in technology attitudes exists between countries versus within countries. 
+
+We start with an empty model (also called null model or intercept-only model) to understand how much variation in technology attitudes exists between countries versus within countries.
 
 The model can be written as:
 
-$$ Y_{ij} = \gamma_{00} + U_{0j} + R_{ij} $$
+$$ Y*{ij} = \gamma*{00} + U*{0j} + R*{ij} $$
 
 Where:
 
-- $$ Y_{ij} $$: Technology attitude score for individual $$ i $$ in country $$ j $$
-- $$ \gamma_{00} $$: Overall mean technology attitude across all countries
-- $$ U_{0j} $$: Random effect for country $$ j $$ (country-level variance)
-- $$ R_{ij} $$: Individual-level residual
+- $$ Y\_{ij} $$: Technology attitude score for individual $$ i $$ in country $$ j $$
+- $$ \gamma\_{00} $$: Overall mean technology attitude across all countries
+- $$ U\_{0j} $$: Random effect for country $$ j $$ (country-level variance)
+- $$ R\_{ij} $$: Individual-level residual
 
 Let's fit this model:
 
@@ -305,21 +301,21 @@ summary(m0)
 #   method [lmerModLmerTest]
 # Formula: tech ~ 1 + (1 | country)
 #    Data: wvs_data
-# 
+#
 # REML criterion at convergence: 417429.5
-# 
-# Scaled residuals: 
-#     Min      1Q  Median      3Q     Max 
-# -3.2032 -0.6107  0.1445  0.7410  1.8554 
-# 
+#
+# Scaled residuals:
+#     Min      1Q  Median      3Q     Max
+# -3.2032 -0.6107  0.1445  0.7410  1.8554
+#
 # Random effects:
 #  Groups   Name        Variance Std.Dev.
-#  country  (Intercept) 0.5361   0.7322  
-#  Residual             5.6805   2.3834  
+#  country  (Intercept) 0.5361   0.7322
+#  Residual             5.6805   2.3834
 # Number of obs: 91175, groups:  country, 64
-# 
+#
 # Fixed effects:
-#             Estimate Std. Error       df t value Pr(>|t|)    
+#             Estimate Std. Error       df t value Pr(>|t|)
 # (Intercept)  7.03637    0.09191 63.03585   76.56   <2e-16 ***
 # ---
 # Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
@@ -338,9 +334,7 @@ ICC <- var_random/(var_random + var_residual)
 print(paste("ICC (manual calculation):", round(ICC, 3)))
 ```
 
-The model shows an overall tech level of 7.04 (p < 0.001) across 64 countries with 91,175 observations. The ICC of 0.086 indicates that only about 8.6% of the total variance in tech scores can be attributed to between-country differences, while the majority of variation (91.4%) exists at the individual level within countries. 
-
-
+The model shows an overall tech level of 7.04 (p < 0.001) across 64 countries with 91,175 observations. The ICC of 0.086 indicates that only about 8.6% of the total variance in tech scores can be attributed to between-country differences, while the majority of variation (91.4%) exists at the individual level within countries.
 
 ## Including Predictors in MLM Models
 
@@ -354,26 +348,26 @@ m1 <- lmer(tech ~ 1 + smu + (1 | country), data = wvs_data)
 # Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
 # Formula: tech ~ 1 + smu + (1 | country)
 #    Data: wvs_data
-# 
+#
 # REML criterion at convergence: 417344.6
-# 
-# Scaled residuals: 
-#     Min      1Q  Median      3Q     Max 
-# -3.2311 -0.6251  0.1299  0.7585  1.8916 
-# 
+#
+# Scaled residuals:
+#     Min      1Q  Median      3Q     Max
+# -3.2311 -0.6251  0.1299  0.7585  1.8916
+#
 # Random effects:
 #  Groups   Name        Variance Std.Dev.
-#  country  (Intercept) 0.5391   0.7343  
-#  Residual             5.6747   2.3822  
+#  country  (Intercept) 0.5391   0.7343
+#  Residual             5.6747   2.3822
 # Number of obs: 91175, groups:  country, 64
-# 
+#
 # Fixed effects:
-#               Estimate Std. Error         df t value Pr(>|t|)    
+#               Estimate Std. Error         df t value Pr(>|t|)
 # (Intercept)  7.158e+00  9.302e-02  6.540e+01  76.955   <2e-16 ***
 # smu         -4.524e-02  4.671e-03  9.117e+04  -9.685   <2e-16 ***
 # ---
 # Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# 
+#
 # Correlation of Fixed Effects:
 #     (Intr)
 # smu -0.135
@@ -381,9 +375,9 @@ m1 <- lmer(tech ~ 1 + smu + (1 | country), data = wvs_data)
 ```
 
 Fixed Effects:
-- The intercept (7.158) represents the average technology attitude score when social media use is zero
--Social media use has a small but significant negative effect (-0.045, *p* < .001), suggesting that higher social media use is associated with slightly more negative attitudes toward technology
 
+- The intercept (7.158) represents the average technology attitude score when social media use is zero
+  -Social media use has a small but significant negative effect (-0.045, _p_ < .001), suggesting that higher social media use is associated with slightly more negative attitudes toward technology
 
 Random Effects:
 
@@ -391,9 +385,7 @@ Random Effects:
 - Residual variance: 5.675 (SD = 2.382)
 - The presence of substantial country-level variance confirms that technology attitudes indeed vary across nations
 
-
 We then extended our analysis to allow the effect of social media use to vary across countries:
-
 
 ```r
 # Model 2: Random slopes and intercepts
@@ -405,41 +397,43 @@ m2 <- lmer(tech ~ 1 + smu + (1 + smu | country), data = wvs_data)
 # Linear mixed model fit by REML. t-tests use Satterthwaite's method ['lmerModLmerTest']
 # Formula: tech ~ 1 + smu + (1 + smu | country)
 #    Data: wvs_data
-# 
+#
 # REML criterion at convergence: 417147.8
-# 
-# Scaled residuals: 
-#     Min      1Q  Median      3Q     Max 
-# -3.2583 -0.6220  0.1565  0.7311  1.9940 
-# 
+#
+# Scaled residuals:
+#     Min      1Q  Median      3Q     Max
+# -3.2583 -0.6220  0.1565  0.7311  1.9940
+#
 # Random effects:
 #  Groups   Name        Variance Std.Dev. Corr
-#  country  (Intercept) 0.446825 0.66845      
+#  country  (Intercept) 0.446825 0.66845
 #           smu         0.005858 0.07654  0.16
-#  Residual             5.656817 2.37841      
+#  Residual             5.656817 2.37841
 # Number of obs: 91175, groups:  country, 64
-# 
+#
 # Fixed effects:
-#             Estimate Std. Error       df t value Pr(>|t|)    
+#             Estimate Std. Error       df t value Pr(>|t|)
 # (Intercept)  7.18065    0.08502 62.92945  84.458  < 2e-16 ***
 # smu         -0.05403    0.01077 64.85413  -5.017 4.34e-06 ***
 # ---
 # Signif. codes:  0 ‘***’ 0.001 ‘**’ 0.01 ‘*’ 0.05 ‘.’ 0.1 ‘ ’ 1
-# 
+#
 # Correlation of Fixed Effects:
 #     (Intr)
-# smu 0.066 
+# smu 0.066
 # optimizer (nloptwrap) convergence code: 0 (OK)
 # Model failed to converge with max|grad| = 0.00960965 (tol = 0.002, component 1)
 ```
+
 Key findings from this more complex model:
 
 Fixed Effects:
-- The average intercept increased slightly to 7.181
-- The negative effect of social media use became stronger (-0.054, *p* < .001)
 
+- The average intercept increased slightly to 7.181
+- The negative effect of social media use became stronger (-0.054, _p_ < .001)
 
 Random Effects:
+
 - Country-level intercept variance: 0.447 (SD = 0.668)
 - Social media use slope variance: 0.006 (SD = 0.077)
 
@@ -450,6 +444,7 @@ This coefficient is hard to interpret on its own. So let's try to visulize the r
 In this part, we'll explore four different methods to visualize multilevel modeling results, each offering unique insights into our data.
 
 ### Method 1: Effect Size Visualization with Bar Plots
+
 Our first approcah adopts the method of Diehl et al. (2021) to display both the magnitude and direction of effects.
 
 ```r
@@ -475,9 +470,7 @@ ggplot(total_effects, aes(x = reorder(country, total_smu), y = total_smu)) +
   theme_minimal() +
   theme(axis.text.x = element_text(angle = 45, hjust = 1))            # Rotate country labels
 
-  ```
-
-
+```
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -492,7 +485,6 @@ Advantages of Method 1:
 - Immediate identification of countries with strongest effects
 - Simple to understand for non-technical audiences
 
-
 ### Method 2: Predicted Values and Country-Specific Trends
 
 The second method focuses on showing how the relationship between SMU and the outcome varies across countries.
@@ -506,19 +498,18 @@ wvs_data$predicted <- predict(m2)
 library(ggplot2)
 library(dplyr)
 
-ggplot(wvs_data, aes(smu, predicted)) + 
+ggplot(wvs_data, aes(smu, predicted)) +
   geom_smooth(se = FALSE, method = lm, size = 2, color = "black") +     # Overall trend line
   stat_smooth(aes(color = country, group = country),                    # Country-specific trends
-              geom = "line", alpha = 0.4, size = 1, 
+              geom = "line", alpha = 0.4, size = 1,
               method = lm, se = FALSE) +
   theme_bw() +
   guides(color = FALSE) +                                               # Remove legend
-  labs(x = "SMU", 
-       y = "Predicted Values", 
+  labs(x = "SMU",
+       y = "Predicted Values",
        title = "SMU-Predicted Value Relationships by Country")
 
 ```
-
 
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
@@ -526,15 +517,15 @@ ggplot(wvs_data, aes(smu, predicted)) +
     </div>
 </div>
 
-
 Advantages of Method 2:
+
 - Shows variation in slopes across countries
 - Displays the overall trend alongside country-specific trends
 - Helps identify countries with divergent patterns
 - Useful for understanding interaction effects
 
-
 ### Method 3: Forest Plot for Effect Sizes
+
 The third method uses a forest plot to display effect sizes with confidence intervals.
 
 ```r
@@ -566,6 +557,7 @@ ggplot(random_effects, aes(y = reorder(country, total_effect))) +
        subtitle = "Dashed line represents overall mean effect")
 
 ```
+
 <div class="row">
     <div class="col-sm mt-3 mt-md-0">
         {% include figure.liquid loading="eager" path="assets/img/project/mlm/mlm8.png" title=" " class="img-fluid rounded z-depth-1" style="width: 50%; height: auto;" %}
@@ -592,7 +584,7 @@ library(ggrepel)
 # Create scatter plot with labels
 coefs_m2$country %>%
   mutate(country = rownames(coefs_m2$country)) %>%
-  ggplot(aes(smu, `(Intercept)`, label = country)) + 
+  ggplot(aes(smu, `(Intercept)`, label = country)) +
   geom_point(size = 2) +                                               # Add points
   geom_smooth(se = FALSE, method = lm, color = "steelblue") +         # Add trend line
   geom_text_repel(                                                    # Add non-overlapping labels
@@ -603,7 +595,7 @@ coefs_m2$country %>%
     max.overlaps = Inf
   ) +
   theme_bw() +
-  labs(x = "Slope (SMU Effect)", 
+  labs(x = "Slope (SMU Effect)",
        y = "Intercept",
        title = "Random Effects: Slope-Intercept Relationship")
 ```

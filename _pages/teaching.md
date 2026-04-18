@@ -7,7 +7,6 @@ nav: true
 nav_order: 6
 ---
 
-
 ## University of Wisconsin–Madison
 
 <div style="border: 1px solid var(--border-color); border-radius: 8px; padding: 16px; margin: 16px 0;
@@ -18,6 +17,5 @@ nav_order: 6
   <p style="margin: 4px 0;"><strong>Role:</strong> Teaching Assistant</p>
   <p style="margin: 4px 0;"><strong>Instructor:</strong> Dhavan Shah</p>
   <p style="margin: 4px 0;"><strong>Semester:</strong> Fall 2025</p>
-
 
 </div>

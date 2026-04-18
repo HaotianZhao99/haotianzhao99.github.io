@@ -7,6 +7,7 @@ importance: 6
 category: work
 related_publications: false
 ---
+
 The Proportional Symbol Chart offers a quick overview of data distribution by comparing the sizes of symbols. These symbols, typically circles or squares, are proportional in size to the values they represent. This visualization technique can be effectively combined with maps to illustrate geographical distributions, as well as showcase horizontal and vertical data distribution patterns.
 
 In a data journalism project, we aimed to analyze the distribution of policies related to Intangible Cultural Heritage (ICH) across various provinces in China. Our focus was on several aspects: identifying years when individual provinces concentrated on policy implementation, comparing policy enactment across provinces during the same period, and highlighting specific time points when multiple provinces simultaneously introduced numerous policies. For this purpose, we chose the Proportional Symbol Chart as our primary visualization strategy.
@@ -22,26 +23,24 @@ Proportional Symbol Chart 可以通过比较比例的大小，来对数据的分
 -->
 
 # Data Collection and Cleaning
+
 Policy data related to Intangible Cultural Heritage (ICH) was primarily sourced from the [China Intangible Cultural Heritage Network](https://www.ihchina.cn/zhengce). This website has compiled various national, ministerial, and local regulatory documents concerning ICH since 2000. We used web scraping techniques to collect these regulatory documents. Some of the entries are as follows:
 
-
-|  Document Title   | Year  |
-|  ----  | ----  |
-| Notice of the People's Government of Tibet Autonomous Region on Announcing the Sixth Batch of Representative Projects of Intangible Cultural Heritage at the Autonomous Region Level  | 2024 |
-| Notice of the People's Government of Ningxia Hui Autonomous Region on Announcing the Seventh Batch of Representative Projects of Intangible Cultural Heritage at the Autonomous Region Level   | 2024 |
-| Notice of Shanghai Municipal People's Government on Announcing the Seventh Batch of Shanghai Municipal Intangible Cultural Heritage Representative Project List and the Extended Project List  | 2024 |
-| ...  | ...|
-
+| Document Title                                                                                                                                                                                | Year |
+| --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---- |
+| Notice of the People's Government of Tibet Autonomous Region on Announcing the Sixth Batch of Representative Projects of Intangible Cultural Heritage at the Autonomous Region Level          | 2024 |
+| Notice of the People's Government of Ningxia Hui Autonomous Region on Announcing the Seventh Batch of Representative Projects of Intangible Cultural Heritage at the Autonomous Region Level  | 2024 |
+| Notice of Shanghai Municipal People's Government on Announcing the Seventh Batch of Shanghai Municipal Intangible Cultural Heritage Representative Project List and the Extended Project List | 2024 |
+| ...                                                                                                                                                                                           | ...  |
 
 After analyzing the data, we found that geographical information is typically contained within the first few characters of the document titles. By extracting the names of provinces, autonomous regions, or municipalities (or simply extracting the first two Chinese characters), we were able to create a streamlined dataset containing provinces and years:
 
-
-|  Region   | Year  |
-|  ----  | ----  |
-| Tibet | 2024 |
+| Region   | Year |
+| -------- | ---- |
+| Tibet    | 2024 |
 | Ningxia  | 2024 |
-| Shanghai  | 2024 |
-| ...  | ...|
+| Shanghai | 2024 |
+| ...      | ...  |
 
 <!--
 # 数据获取与清洗
@@ -66,6 +65,7 @@ After analyzing the data, we found that geographical information is typically co
 # Visualization with ggplot2
 
 Firstly, we need to tally the number of regulatory documents enacted by each province every year.
+
 ```r
 library(readxl)
 library(dplyr)
@@ -76,6 +76,7 @@ data <- data %>%
   group_by(year, province) %>%
   summarise(count = n(), .groups = 'drop')
 ```
+
 Therefore, we have generated data on the number of regulations enacted each year and by each province. Next, we can proceed to create a Proportional Symbol Chart.
 
 ```r
@@ -95,7 +96,7 @@ We can further enhance the appearance of the image by adjusting the parameters.
 
 ```r
 #Convert to a factor to adjust the size of the points
-datap$count <- as.factor(datap$count) 
+datap$count <- as.factor(datap$count)
 datap$col <- factor(datap$count, level = 1:9, ordered = TRUE)  #Divide into 9 levels, one level for one regulation
 
 plot <- ggplot(datap, aes(x = year, y = province, size = col)) +
@@ -115,6 +116,7 @@ plot <- ggplot(datap, aes(x = year, y = province, size = col)) +
 
 print(plot)
 ```
+
 The plotted image looks as follows.
 
 <div class="row">
