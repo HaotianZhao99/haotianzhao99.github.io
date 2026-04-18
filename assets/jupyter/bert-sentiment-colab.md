@@ -9,7 +9,6 @@ import pandas as pd
 
 Before diving into the implementation, we need to set up our authentication with the [Hugging Face Hub](https://huggingface.co/). [Hugging Face](https://huggingface.co/) is a platform that hosts thousands of pre-trained models and datasets, making it an essential resource for modern NLP tasks. This step is crucial if you plan to work with private models or want to save your fine-tuned model to the Hub later.
 
-
 ```python
 from huggingface_hub import login
 
@@ -19,8 +18,8 @@ login("your_token")
 ```
 
 ## Data Loading and Preparation
-For this sentiment analysis task, we'll use a Chinese social media dataset containing 100,000 Weibo posts with sentiment labels. The dataset is hosted on the [Hugging Face Hub](https://huggingface.co/datasets/dirtycomputer/weibo_senti_100k) and can be easily loaded using the `datasets` library.
 
+For this sentiment analysis task, we'll use a Chinese social media dataset containing 100,000 Weibo posts with sentiment labels. The dataset is hosted on the [Hugging Face Hub](https://huggingface.co/datasets/dirtycomputer/weibo_senti_100k) and can be easily loaded using the `datasets` library.
 
 ```python
 from datasets import load_dataset
@@ -32,18 +31,12 @@ ds = load_dataset("dirtycomputer/weibo_senti_100k")
 ds
 ```
 
-
-
-
     DatasetDict({
         train: Dataset({
             features: ['label', 'review'],
             num_rows: 119988
         })
     })
-
-
-
 
 ```python
 # Convert Hugging Face dataset to pandas DataFrame
@@ -66,13 +59,13 @@ if df.isnull().sum().any():
     Dataset Overview:
     Number of samples: 119988
     Columns: ['label', 'review']
-    
+
     Label distribution:
     label
     0    59995
     1    59993
     Name: count, dtype: int64
-    
+
     Sample reviews:
     0                ﻿更博了，爆照了，帅的呀，就是越来越爱你！生快傻缺[爱你][爱你][爱你]
     1    @张晓鹏jonathan 土耳其的事要认真对待[哈哈]，否则直接开除。@丁丁看世界 很是细心...
@@ -80,13 +73,12 @@ if df.isnull().sum().any():
     3                                           美~~~~~[爱你]
     4                                    梦想有多大，舞台就有多大![鼓掌]
     Name: review, dtype: object
-    
 
-The dataset contains 119,988 samples. The dataset is perfectly balanced with 59,995 negative samples (label 0) and 59,993 positive samples (label 1). 
+The dataset contains 119,988 samples. The dataset is perfectly balanced with 59,995 negative samples (label 0) and 59,993 positive samples (label 1).
 
 ## Data Splitting
-Although our dataset is pre-organized, we'll create our own train-test split to ensure we have a fresh evaluation set. We'll use 80% of the data for training and reserve 20% for testing the model's performance.
 
+Although our dataset is pre-organized, we'll create our own train-test split to ensure we have a fresh evaluation set. We'll use 80% of the data for training and reserve 20% for testing the model's performance.
 
 ```python
 from sklearn.model_selection import train_test_split
@@ -106,7 +98,6 @@ The key parameters:
 
 I run the project on [Google Colab](https://colab.research.google.com), a cloud-based Jupyter notebook environment. Colab provides free GPU access, making it an excellent choice for users without local GPU resources to run deep learning models like BERT.
 
-
 ```python
 # Check for available CUDA device and set up GPU/CPU
 # Colab typically provides a single GPU, if available
@@ -122,13 +113,12 @@ else:
 
     Using GPU: NVIDIA A100-SXM4-40GB
     GPU Memory: 42.48 GB
-    
 
 ## Tokenizer Initialization
+
 For our Chinese sentiment analysis task, we'll use the `bert-base-chinese` tokenizer. This pre-trained tokenizer is specifically designed for Chinese text.
 
 The tokenizer is crucial for preparing our text data for BERT. It converts Chinese text into tokens that BERT can understand
-
 
 ```python
 # Initialize the BERT Chinese tokenizer
@@ -139,10 +129,10 @@ tokenizer = BertTokenizer.from_pretrained('bert-base-chinese')
 To efficiently handle our data during training, we need to create a custom Dataset class that inherits from PyTorch's Dataset class. This class will take care of text encoding and provide a standardized way to access our samples.
 
 It serves as a data pipeline that:
+
 1. Transforms Chinese text into BERT-compatible token IDs
 2. Ensures consistent input dimensions through padding and truncation
 3. Efficiently delivers batched data during training
-
 
 ```python
 from torch.utils.data import Dataset
@@ -196,7 +186,6 @@ class TextDataset(Dataset):
 
 Let's verify our label distribution and create an explicit mapping for our sentiment classes. While our labels are already in a binary format (0 and 1), maintaining an explicit mapping is a good practice for code clarity and future modifications.
 
-
 ```python
 # Print unique labels in the dataset
 print("Unique labels in training data:", sorted(set(train_df['label'])))
@@ -218,7 +207,7 @@ print("Testing:", pd.Series(test_labels).value_counts())
 ```
 
     Unique labels in training data: [0, 1]
-    
+
     Label distribution after mapping:
     Training: 0    48151
     1    47839
@@ -226,8 +215,6 @@ print("Testing:", pd.Series(test_labels).value_counts())
     Testing: 1    12154
     0    11844
     Name: count, dtype: int64
-    
-
 
 ```python
 # Explicit label mapping to ensure correct sentiment assignment
@@ -250,7 +237,6 @@ print("Training set label distribution:", pd.Series(train_labels).value_counts()
 print("Test set label distribution:", pd.Series(test_labels).value_counts())
 ```
 
-    
     Final verification:
     Training set label distribution: 0    48151
     1    47839
@@ -258,9 +244,9 @@ print("Test set label distribution:", pd.Series(test_labels).value_counts())
     Test set label distribution: 1    12154
     0    11844
     Name: count, dtype: int64
-    
 
 ## Model Training Setup
+
 To fine-tune BERT for our sentiment analysis task, we'll follow these key steps:
 
 1. **Model Initialization**: Load the pre-trained Chinese BERT model
@@ -276,7 +262,6 @@ To fine-tune BERT for our sentiment analysis task, we'll follow these key steps:
 The Hugging Face Trainer API simplifies the training process by handling the training loops, device management, and model optimization automatically.
 
 The code below implements these steps:
-
 
 ```python
 # Load pre-trained Chinese BERT model and configure for binary classification
@@ -354,7 +339,6 @@ eval_results = trainer.evaluate()
 print("\nEvaluation Results:", eval_results)
 ```
 
-
     model.safetensors:   0%|          | 0.00/412M [00:00<?, ?B/s]
 
 
@@ -363,7 +347,7 @@ print("\nEvaluation Results:", eval_results)
     /usr/local/lib/python3.10/dist-packages/transformers/training_args.py:1568: FutureWarning: `evaluation_strategy` is deprecated and will be removed in version 4.46 of 🤗 Transformers. Use `eval_strategy` instead
       warnings.warn(
     [34m[1mwandb[0m: [33mWARNING[0m The `run_name` is currently set to the same value as `TrainingArguments.output_dir`. If this was not intended, please specify a different run name by setting the `TrainingArguments.run_name` parameter.
-    
+
 
     Training Configuration:
     Model: bert-base-chinese
@@ -371,10 +355,10 @@ print("\nEvaluation Results:", eval_results)
     Test samples: 23998
     Batch size: 32
     Number of epochs: 3
-    
+
 
     [34m[1mwandb[0m: Using wandb-core as the SDK backend.  Please refer to https://wandb.me/wandb-core for more information.
-    
+
 
 
     <IPython.core.display.Javascript object>
@@ -385,32 +369,19 @@ print("\nEvaluation Results:", eval_results)
     wandb: Paste an API key from your profile and hit enter, or press ctrl+c to quit:
 
      ··········
-    
+
 
     [34m[1mwandb[0m: Appending key for api.wandb.ai to your netrc file: /root/.netrc
-    
-
 
 Tracking run with wandb version 0.18.7
 
-
-
 Run data is saved locally in <code>/content/wandb/run-20241218_150159-oimgwuen</code>
-
-
 
 Syncing run <strong><a href='https://wandb.ai/zhaohaotian99-huazhong-university-of-science-and-technology/huggingface/runs/oimgwuen' target="_blank">sentiment-weibo-100k-fine-tuned-bert</a></strong> to <a href='https://wandb.ai/zhaohaotian99-huazhong-university-of-science-and-technology/huggingface' target="_blank">Weights & Biases</a> (<a href='https://wandb.me/developer-guide' target="_blank">docs</a>)<br/>
 
-
-
 View project at <a href='https://wandb.ai/zhaohaotian99-huazhong-university-of-science-and-technology/huggingface' target="_blank">https://wandb.ai/zhaohaotian99-huazhong-university-of-science-and-technology/huggingface</a>
 
-
-
 View run at <a href='https://wandb.ai/zhaohaotian99-huazhong-university-of-science-and-technology/huggingface/runs/oimgwuen' target="_blank">https://wandb.ai/zhaohaotian99-huazhong-university-of-science-and-technology/huggingface/runs/oimgwuen</a>
-
-
-
 
     <div>
 
@@ -418,6 +389,7 @@ View run at <a href='https://wandb.ai/zhaohaotian99-huazhong-university-of-scien
       [9000/9000 38:15, Epoch 3/3]
     </div>
     <table border="1" class="dataframe">
+
   <thead>
  <tr style="text-align: left;">
       <th>Epoch</th>
@@ -460,21 +432,14 @@ View run at <a href='https://wandb.ai/zhaohaotian99-huazhong-university-of-scien
   </tbody>
 </table><p>
 
-
     No files have been modified since last commit. Skipping to prevent empty commit.
     WARNING:huggingface_hub.hf_api:No files have been modified since last commit. Skipping to prevent empty commit.
-    
-
-
 
 <div>
 
-  <progress value='375' max='375' style='width:300px; height:20px; vertical-align: middle;'></progress>
-  [375/375 00:50]
+<progress value='375' max='375' style='width:300px; height:20px; vertical-align: middle;'></progress>
+[375/375 00:50]
+
 </div>
 
-
-
-    
     Evaluation Results: {'eval_loss': 0.03648396208882332, 'eval_accuracy': 0.9840403366947246, 'eval_f1': 0.9839916405433646, 'eval_precision': 1.0, 'eval_recall': 0.9684877406615107, 'eval_runtime': 50.6448, 'eval_samples_per_second': 473.849, 'eval_steps_per_second': 7.405, 'epoch': 3.0}
-    

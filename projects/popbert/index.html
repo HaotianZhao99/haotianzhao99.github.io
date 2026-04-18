@@ -9,7 +9,7 @@
 </span>    <span class="n">model</span><span class="p">.</span><span class="nf">train</span><span class="p">()</span>                            <span class="c1"># Set model to training mode
 </span>    <span class="k">for</span> <span class="n">batch</span> <span class="ow">in</span> <span class="n">dataloader</span><span class="p">:</span>
         <span class="n">optimizer</span><span class="p">.</span><span class="nf">zero_grad</span><span class="p">()</span>                <span class="c1"># Clear previous gradients
-</span>        
+</span>
         <span class="c1"># Move data to device and forward propagation
 </span>        <span class="n">encodings</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="sh">"</span><span class="s">encodings</span><span class="sh">"</span><span class="p">].</span><span class="nf">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
         <span class="n">labels</span> <span class="o">=</span> <span class="n">batch</span><span class="p">[</span><span class="sh">"</span><span class="s">labels</span><span class="sh">"</span><span class="p">].</span><span class="nf">to</span><span class="p">(</span><span class="n">DEVICE</span><span class="p">)</span>
